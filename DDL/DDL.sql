@@ -1,38 +1,8 @@
--- use groups DB
-USE p5g4;
-GO;
-
--- drops the schema if it exists in the DB
-DROP SCHEMA IF EXISTS Project;
-GO;
-
--- creates the schema
-CREATE SCHEMA Project;
-GO;
-
--- table drops/ constraint drops
-DROP TABLE Project.PERSON;
-DROP TABLE Project.[USER];
-DROP TABLE Project.COSTUMER;
-DROP TABLE Project.STORE;
-DROP TABLE Project.SUPPLIER;
-DROP TABLE Project.STAFF;
-DROP TABLE Project.MANAGER;
-DROP TABLE Project.[ORDER]
-DROP TABLE Project.MANAGES;
-DROP TABLE Project.ITEM;
-DROP TABLE Project.ITEM_ORDER;
-DROP TABLE Project.SUPPLIES;
-DROP TABLE Project.CONTACT_SUPPLIER;
-DROP TABLE Project.TRASPORT;
-DROP TABLE Project.CONTACT_TRANSPORT;
-GO;
-
 -- create tables needed
 CREATE TABLE Project.PERSON (
     NIF         CHAR(9) NOT NULL,
     [Address]   VARCHAR(30),
-    PName       VARCHAR(20),
+    PName       VARCHAR(50),
     PhoneNumb   CHAR(9),
     Email       VARCHAR(30) NOT NULL,
     BirthDate   DATE
@@ -86,7 +56,7 @@ CREATE TABLE Project.STAFF (
     StoreURL         VARCHAR(50),
 
     PRIMARY KEY (StaffNIF, ID),
-    FOREIGN KEY (StaffNIF, ID) REFERENCES Project.[USERS] (UserNIF, ID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (StaffNIF, ID) REFERENCES Project.[USER] (UserNIF, ID) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (StoreURL) REFERENCES Project.STORE(StoreURL) ON UPDATE CASCADE
 );
 
@@ -96,7 +66,7 @@ CREATE TABLE Project.MANAGER (
     StoreURL            VARCHAR(50),
 
     PRIMARY KEY (ManagerNIF, ID),
-    FOREIGN KEY (ManagerNIF, ID) REFERENCES Project.[USERS] (UserNIF, ID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (ManagerNIF, ID) REFERENCES Project.[USER] (UserNIF, ID) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (StoreURL) REFERENCES Project.STORE(StoreURL) ON UPDATE CASCADE
 );
 
@@ -109,7 +79,7 @@ CREATE TABLE Project.[ORDER] (
     StoreURL        VARCHAR(50),
 
     PRIMARY KEY (OrderNumber, CostumerNIF),
-    FOREIGN KEY (CostumerNIF) REFERENCES Project.COSTUMER (CostumerNIF) ON DELETE SET NULL,
+    FOREIGN KEY (CostumerNIF) REFERENCES Project.COSTUMER (CostumerNIF),
     FOREIGN KEY (StoreURL) REFERENCES Project.STORE (StoreURL) ON DELETE CASCADE
 );
 
@@ -117,10 +87,11 @@ CREATE TABLE Project.MANAGES(
     StaffNIF        CHAR(9) NOT NULL,
     StaffID         INT NOT NULL,
     OrderNumber     INT NOT NULL,
+    CostumerNIF     CHAR(9) NOT NULL,
 
     PRIMARY KEY (StaffNIF, StaffID, OrderNumber),
     FOREIGN KEY (StaffNIF, StaffID) REFERENCES Project.STAFF (StaffNIF, ID) ON UPDATE CASCADE,
-    FOREIGN KEY (OrderNumber) REFERENCES Project.[ORDER] (OrderNumber) ON UPDATE CASCADE ON DELETE SET NULL
+    FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE
 );
 
 CREATE TABLE Project.ITEM(
@@ -138,10 +109,11 @@ CREATE TABLE Project.ITEM(
 
 CREATE TABLE Project.ITEM_ORDER(
     OrderNumber         INT NOT NULL,
+    CostumerNIF     CHAR(9) NOT NULL,
     ItemID              INT NOT NULL,
 
-    PRIMARY KEY (OrderNumber, ItemID),
-    FOREIGN KEY (OrderNumber) REFERENCES Project.[ORDER] (OrderNumber) ON UPDATE CASCADE,
+    PRIMARY KEY (OrderNumber, CostumerNIF, ItemID),
+    FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE,
     FOREIGN KEY (ItemID) REFERENCES Project.ITEM (ID) ON UPDATE CASCADE
 );
 
@@ -160,29 +132,32 @@ CREATE TABLE Project.CONTACT_SUPPLIER(
     SupplierID      INT NOT NULL,
 
     PRIMARY KEY (ManagerNIF, ManagerID, SupplierID),
-    FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
     FOREIGN KEY (SupplierID) REFERENCES Project.SUPPLIER (ID) ON UPDATE CASCADE
 );
 
 CREATE TABLE Project.TRANSPORT(
     TransportNumber INT NOT NULL,
     OrderNumber     INT NOT NULL,
+    CostumerNIF     CHAR(9) NOT NULL,
     Availabilty     BINARY,
     Cost            DECIMAL(6,2),
     Method          VARCHAR(15),
     CompanyEmail    VARCHAR(30),
     CompanyName     VARCHAR(15),
 
-    PRIMARY KEY (TransportNumber, OrderNumber),
-    FOREIGN KEY (OrderNumber) REFERENCES Project.[ORDER] (OrderNumber) ON UPDATE CASCADE ON DELETE SET NULL
+    PRIMARY KEY (TransportNumber, OrderNumber, CostumerNIF),
+    FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE
 );
 
 CREATE TABLE Project.CONTACT_TRANSPORT(
     ManagerNIF      CHAR(9) NOT NULL,
     ManagerID       INT NOT NULL,
     TransportNumber INT NOT NULL,
+    OrderNumber     INT NOT NULL,
+    CostumerNIF     CHAR(9) NOT NULL,
 
-    PRIMARY KEY (ManagerNIF, ManagerID, TransportNumber),
-    FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (TransportNumber) REFERENCES Project.TRANSPORT (TransportNumber) ON UPDATE CASCADE
+    PRIMARY KEY (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
+    FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
+    FOREIGN KEY (TransportNumber, OrderNumber, CostumerNIF) REFERENCES Project.TRANSPORT (TransportNumber, OrderNumber, CostumerNIF) ON UPDATE CASCADE
 );
