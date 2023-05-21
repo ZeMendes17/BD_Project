@@ -17,7 +17,7 @@ CREATE TABLE Project.[USER] (
     RegisterDate    DATE,
     UserPassword    VARCHAR(20),
     UserName        VARCHAR(30) NOT NULL,
-    Salary          INT,
+    Salary          INT CHECK (Salary > 0),
 
     PRIMARY KEY (UserNIF, ID),
     FOREIGN KEY (UserNIF) REFERENCES Project.PERSON (NIF) ON UPDATE CASCADE ON DELETE CASCADE,
