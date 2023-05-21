@@ -8,8 +8,10 @@ AS
     BEGIN TRAN
         BEGIN TRY
             IF NOT EXISTS(SELECT NIF FROM p5g4.Project.PERSON WHERE NIF=@nif)
+            BEGIN
                 INSERT INTO p5g4.Project.PERSON VALUES (@nif, @addr, @name, @phone, @email, @bdate)
                 INSERT INTO p5g4.Project.COSTUMER VALUES (@nif)
+            END
             COMMIT TRAN
         END TRY
         BEGIN CATCH
@@ -34,8 +36,10 @@ AS
     BEGIN TRAN
         BEGIN TRY
             IF NOT EXISTS(SELECT NIF FROM p5g4.Project.PERSON WHERE NIF=@nif)
+            BEGIN
                 INSERT INTO p5g4.Project.PERSON VALUES (@nif, @addr, @name, @phone, @email, @bdate)
                 INSERT INTO p5g4.Project.[USER] VALUES (@nif, @userID, @todayDate, @password, @username, @salary)
+            END
             COMMIT TRAN
         END TRY
         BEGIN CATCH
@@ -61,7 +65,7 @@ AS
                 SET @userID = (SELECT ID FROM p5g4.Project.[USER] WHERE UserNIF=@nif);
 
                 INSERT INTO p5g4.Project.Manager VALUES (@nif, @userID, @url)
-                END
+            END
             COMMIT TRAN
         END TRY
         BEGIN CATCH
