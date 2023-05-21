@@ -77,6 +77,7 @@ CREATE TABLE Project.[ORDER] (
     OrderState      VARCHAR(15),
     NumItems        INT,
     StoreURL        VARCHAR(50),
+    OrderDate       DATETIME
 
     PRIMARY KEY (OrderNumber, CostumerNIF),
     FOREIGN KEY (CostumerNIF) REFERENCES Project.COSTUMER (CostumerNIF),
@@ -127,9 +128,11 @@ CREATE TABLE Project.SUPPLIES(
 );
 
 CREATE TABLE Project.CONTACT_SUPPLIER(
-    ManagerNIF      CHAR(9) NOT NULL,
-    ManagerID       INT NOT NULL,
-    SupplierID      INT NOT NULL,
+    ManagerNIF          CHAR(9) NOT NULL,
+    ManagerID           INT NOT NULL,
+    SupplierID          INT NOT NULL,
+    ContactDate         DATETIME,
+    ContactDescription  VARCHAR(200)
 
     PRIMARY KEY (ManagerNIF, ManagerID, SupplierID),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
@@ -156,6 +159,8 @@ CREATE TABLE Project.CONTACT_TRANSPORT(
     TransportNumber INT NOT NULL,
     OrderNumber     INT NOT NULL,
     CostumerNIF     CHAR(9) NOT NULL,
+    ContactDate     DATETIME,
+    ContactDescription  VARCHAR(200)
 
     PRIMARY KEY (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,

@@ -65,12 +65,12 @@ INSERT INTO p5g4.Project.SUPPLIER VALUES (6, 'Superior Imports', 'superior@examp
 INSERT INTO p5g4.Project.SUPPLIER VALUES (7, 'Trusted Supplies LLC', 'trusted@example.com', '328 Main Avenue');
 
 --insert 6 orders
-INSERT INTO p5g4.Project.[ORDER] VALUES (1, '189654321', 1099.99, 'Pending', 1, 'https://www.weselltech.com');
-INSERT INTO p5g4.Project.[ORDER] VALUES (2, '129743586', 49.99, 'Shipped', 1, 'https://www.weselltech.com');
-INSERT INTO p5g4.Project.[ORDER] VALUES (3, '216598743', 149.98, 'Delivered', 2, 'https://www.weselltech.com');
-INSERT INTO p5g4.Project.[ORDER] VALUES (4, '237894561', 19.99, 'Pending', 1, 'https://www.hatit.com');
-INSERT INTO p5g4.Project.[ORDER] VALUES (5, '236472918', 74.98, 'Shipped', 2, 'https://www.hatit.com');
-INSERT INTO p5g4.Project.[ORDER] VALUES (6, '253619487', 89.97, 'Delivered', 3, 'https://www.hatit.com');
+INSERT INTO p5g4.Project.[ORDER] VALUES (1, '189654321', 1099.99, 'Pending', 1, 'https://www.weselltech.com','2023-06-01 14:30:00');
+INSERT INTO p5g4.Project.[ORDER] VALUES (2, '129743586', 49.99, 'Shipped', 1, 'https://www.weselltech.com', '2023-06-19 12:34:56');
+INSERT INTO p5g4.Project.[ORDER] VALUES (3, '216598743', 149.98, 'Delivered', 2, 'https://www.weselltech.com', '2023-06-20 15:55:20');
+INSERT INTO p5g4.Project.[ORDER] VALUES (4, '237894561', 19.99, 'Pending', 1, 'https://www.hatit.com', '2023-06-15 10:00:00');
+INSERT INTO p5g4.Project.[ORDER] VALUES (5, '236472918', 74.98, 'Shipped', 2, 'https://www.hatit.com', '2023-06-20 13:32:49');
+INSERT INTO p5g4.Project.[ORDER] VALUES (6, '253619487', 89.97, 'Delivered', 3, 'https://www.hatit.com', '2023-06-21 18:15:12');
 
 
 -- insert 6 orders to manages
@@ -138,18 +138,18 @@ INSERT INTO p5g4.Project.SUPPLIES VALUES (7, 19);
 INSERT INTO p5g4.Project.SUPPLIES VALUES (7, 20);
 
 -- insert 12 supplier contacts
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('123456123', 6, 6);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234129765', 4, 6);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 6, 7);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 6, 6);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 6, 6);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('199124587', 2, 1);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('199124587', 2, 2);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('200010010', 3, 3);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('200010010', 3, 1);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 3);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 4);
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 5);
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('123456123', 6, 6, '2023-06-15 09:24:32', 'Ordering more products');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234129765', 4, 6, '2023-06-17 14:58:21', 'Needed to see availability');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 5, 7, '2023-06-19 08:37:45', 'Ordering more Beret Hats');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 5, 6, '2023-06-14 17:12:03', 'Checking if Baseball Cap are available for order');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 5, 6, '2023-06-18 21:30:57', 'Called the company');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('199124587', 2, 1, '2023-06-16 12:45:29', 'Contacted the company to discuss prices');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('199124587', 2, 2, '2023-06-20 07:03:14', 'Ordered more Nintendo Switch Console');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('200010010', 3, 3, '2023-06-15 23:55:02', 'Price negotiation');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('200010010', 3, 1, '2023-06-18 05:42:36', 'Called the company');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 3, '2023-06-17 18:19:47', 'Seeing availability of Amazon Echo Dot (4th Generation)');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 4, '2023-06-19 16:28:10', 'Discused prices');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 5, '2023-06-16 08:12:55', 'Ordered more Dyson V11 Cordless Vacuum Cleaner');
 
 --insert 6 transport
 INSERT INTO p5g4.Project.TRANSPORT VALUES (1, 1, '189654321', 1, 12.99, 'Plane', 'hts@example.com', 'Horizon Transport Solutions');
@@ -160,6 +160,6 @@ INSERT INTO p5g4.Project.TRANSPORT VALUES (5, 5, '236472918', 1, 9.99, 'Plane', 
 INSERT INTO p5g4.Project.TRANSPORT VALUES (6, 6, '253619487', 0, 5.99, 'Car', 'transmax.express@example.com', 'TransMax Express');
 
 -- insert into contact transport --> 3
-INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('199124587', 2, 1, 1, '189654321');
-INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('123456123', 6, 5, 5, '236472918');
-INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('234129765', 4, 4, 4, '237894561');
+INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('199124587', 2, 1, 1, '189654321', '2023-06-15 19:41:22', 'Contacted company regarding prices');
+INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('123456123', 6, 5, 5, '236472918', '2023-06-20 09:03:18', 'Checking Plane availabilty for more orders');
+INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('234129765', 4, 4, 4, '237894561', '2023-05-17 13:27:09', 'Talked prices');

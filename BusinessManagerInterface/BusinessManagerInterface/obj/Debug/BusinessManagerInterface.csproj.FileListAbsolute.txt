@@ -1,0 +1,11 @@
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\bin\Debug\BusinessManagerInterface.exe.config
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\bin\Debug\BusinessManagerInterface.exe
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\bin\Debug\BusinessManagerInterface.pdb
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.csproj.AssemblyReference.cache
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.csproj.SuggestedBindingRedirects.cache
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.Form1.resources
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.Properties.Resources.resources
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.csproj.GenerateResource.cache
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.csproj.CoreCompileInputs.cache
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.exe
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.pdb
