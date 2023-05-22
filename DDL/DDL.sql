@@ -1,3 +1,33 @@
+-- use groups DB
+USE p5g4;
+GO;
+
+-- drops the schema if it exists in the DB
+DROP SCHEMA IF EXISTS Project;
+GO;
+
+-- creates the schema
+CREATE SCHEMA Project;
+GO;
+
+-- table drops/ constraint drops
+DROP TABLE Project.PERSON;
+DROP TABLE Project.[USER];
+DROP TABLE Project.COSTUMER;
+DROP TABLE Project.STORE;
+DROP TABLE Project.SUPPLIER;
+DROP TABLE Project.STAFF;
+DROP TABLE Project.MANAGER;
+DROP TABLE Project.[ORDER]
+DROP TABLE Project.MANAGES;
+DROP TABLE Project.ITEM;
+DROP TABLE Project.ITEM_ORDER;
+DROP TABLE Project.SUPPLIES;
+DROP TABLE Project.CONTACT_SUPPLIER;
+DROP TABLE Project.TRASPORT;
+DROP TABLE Project.CONTACT_TRANSPORT;
+GO;
+
 -- create tables needed
 CREATE TABLE Project.PERSON (
     NIF         CHAR(9) NOT NULL,
