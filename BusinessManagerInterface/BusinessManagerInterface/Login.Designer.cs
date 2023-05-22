@@ -1,6 +1,6 @@
 ﻿namespace BusinessManagerInterface
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -30,7 +30,7 @@
         {
             this.title = new System.Windows.Forms.Label();
             this.subtitle = new System.Windows.Forms.Label();
-            this.login = new System.Windows.Forms.Button();
+            this.but = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,18 +62,18 @@
             this.subtitle.Text = "If you are a Manager or Staff Member of any our stores you just need to Log In!";
             this.subtitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // login
+            // but
             // 
-            this.login.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.login.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.login.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login.Location = new System.Drawing.Point(798, 424);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(100, 40);
-            this.login.TabIndex = 2;
-            this.login.Text = "Log In";
-            this.login.UseVisualStyleBackColor = true;
-            this.login.Click += new System.EventHandler(this.login_Click);
+            this.but.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.but.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.but.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.but.Location = new System.Drawing.Point(798, 424);
+            this.but.Name = "login";
+            this.but.Size = new System.Drawing.Size(100, 40);
+            this.but.TabIndex = 2;
+            this.but.Text = "Log In";
+            this.but.UseVisualStyleBackColor = true;
+            this.but.Click += new System.EventHandler(this.login_Click);
             // 
             // label2
             // 
@@ -128,9 +128,9 @@
             this.showBox.Size = new System.Drawing.Size(292, 22);
             this.showBox.TabIndex = 9;
             // 
-            // Form1
+            // Login
             // 
-            this.AcceptButton = this.login;
+            this.AcceptButton = this.but;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -141,13 +141,13 @@
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.passwordBox);
-            this.Controls.Add(this.login);
+            this.Controls.Add(this.but);
             this.Controls.Add(this.subtitle);
             this.Controls.Add(this.title);
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = " ";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.Load += new System.EventHandler(this.Login_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,7 +157,7 @@
 
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label subtitle;
-        private System.Windows.Forms.Button login;
+        private System.Windows.Forms.Button but;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label label3;

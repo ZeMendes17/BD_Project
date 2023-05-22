@@ -58,7 +58,7 @@ EXEC p5g4.Project.addStaff '255544444', 'Rua da Esquina', 'Sebastian', '90010020
 -- insert 7 suppliers
 INSERT INTO p5g4.Project.SUPPLIER VALUES (1, 'GetYourSupplies', 'supplies@example.com', '567 Pine Street');
 INSERT INTO p5g4.Project.SUPPLIER VALUES (2, 'XYZ Distributors', 'xyz@example.com', '13 Santo Amaro');
-INSERT INTO p5g4.Project.SUPPLIER VALUES (3, 'Global Suppliers Inc.', 'global@example.com', '599 Bacarena');
+INSERT INTO p5g4.Project.SUPPLIER VALUES (3, 'Global Suppliers Inc', 'global@example.com', '599 Bacarena');
 INSERT INTO p5g4.Project.SUPPLIER VALUES (4, 'Quality Products Co.', 'quality@example.com', '1212 Zambujeira');
 INSERT INTO p5g4.Project.SUPPLIER VALUES (5, 'Best Deals Ltd.', 'bestdeals@example.com', '11 Fundão');
 INSERT INTO p5g4.Project.SUPPLIER VALUES (6, 'Superior Imports', 'superior@example.com', '14 Chaves City');
@@ -104,16 +104,15 @@ INSERT INTO p5g4.Project.ITEM VALUES (19, 'Trucker Hat', 19.99, 15, 'https://www
 INSERT INTO p5g4.Project.ITEM VALUES (20, 'Wide Brim Hat', 44.99, 8, 'https://www.hatit.com');
 
 -- insert the order items into ITEM_ORDER --> 10
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (1, '189654321', 1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (2, '129743586', 6);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (3, '216598743', 6);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (3, '216598743', 9);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (4, '237894561', 12);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (5, '236472918', 18);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (5, '236472918', 20);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (6, '253619487', 15);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (6, '253619487', 15);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (6, '253619487', 17);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (1, '189654321', 1, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (2, '129743586', 6, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (3, '216598743', 6, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (3, '216598743', 9, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (4, '237894561', 12, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (5, '236472918', 18, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (5, '236472918', 20, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (6, '253619487', 15, 2);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (6, '253619487', 17, 1);
 
 -- insert for each item, its supplier --> 20
 INSERT INTO p5g4.Project.SUPPLIES VALUES (1, 1);

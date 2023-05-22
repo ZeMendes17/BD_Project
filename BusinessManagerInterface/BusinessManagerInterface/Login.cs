@@ -11,24 +11,29 @@ using System.Data.SqlClient;
 
 namespace BusinessManagerInterface
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         private SqlConnection cn;
+        String dbServer = "tcp:mednat.ieeta.pt\\SQLSERVER,8101";
+        String dbName = "p5g4";
+        String userName = "p5g4";
+        String userPass = "Bz105107!";
 
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Login_Load(object sender, EventArgs e)
         {
             cn = getSGBDConnection();
             bool a = verifySGBDConnection();
+            Console.WriteLine(a);
         }
 
         private SqlConnection getSGBDConnection()
         {
-            return new SqlConnection("data source= DESKTOP-TT1ASJK\\SQLEXPRESS2019;integrated security=true;initial catalog=p5g4");
+            return new SqlConnection("data Source = " + dbServer + " ;" + "initial Catalog = " + dbName + ";" + "uid = " + userName + ";" + "password = " + userPass);
         }
 
         private bool verifySGBDConnection()
@@ -92,7 +97,7 @@ namespace BusinessManagerInterface
                 //Console.WriteLine(rdr["NIF"].ToString() + " ----> " + rdr["PName"]);
                 String dbname = rdr["UserName"].ToString();
                 String dbpass = rdr["UserPassword"].ToString();
-
+                //Console.WriteLine(dbname);
                 if(dbname == username && dbpass == password)
                 {
 
@@ -137,11 +142,11 @@ namespace BusinessManagerInterface
             cn.Close();
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Login_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
-                login.PerformClick();
+                but.PerformClick();
             }
         }
     }

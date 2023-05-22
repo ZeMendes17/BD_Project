@@ -142,6 +142,7 @@ CREATE TABLE Project.ITEM_ORDER(
     OrderNumber         INT NOT NULL,
     CostumerNIF     CHAR(9) NOT NULL,
     ItemID              INT NOT NULL,
+    Quantity            INT CHECK (Quantity > 0),
 
     PRIMARY KEY (OrderNumber, CostumerNIF, ItemID),
     FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE,
@@ -157,14 +158,14 @@ CREATE TABLE Project.SUPPLIES(
     FOREIGN KEY (ItemID) REFERENCES Project.ITEM (ID) ON UPDATE CASCADE
 );
 
-CREATE TABLE Project.CONTACT_SUPPLIER(
+CREATE TABLE Project.CONTACT_SUPPLIER (
     ManagerNIF          CHAR(9) NOT NULL,
     ManagerID           INT NOT NULL,
     SupplierID          INT NOT NULL,
     ContactDate         DATETIME,
-    ContactDescription  VARCHAR(200)
+    ContactDescription  VARCHAR(200),
 
-    PRIMARY KEY (ManagerNIF, ManagerID, SupplierID),
+    -- PRIMARY KEY (ManagerNIF, ManagerID, SupplierID),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
     FOREIGN KEY (SupplierID) REFERENCES Project.SUPPLIER (ID) ON UPDATE CASCADE
 );
@@ -175,9 +176,9 @@ CREATE TABLE Project.TRANSPORT(
     CostumerNIF     CHAR(9) NOT NULL,
     Availabilty     BINARY,
     Cost            DECIMAL(6,2),
-    Method          VARCHAR(15),
-    CompanyEmail    VARCHAR(30),
-    CompanyName     VARCHAR(15),
+    Method          VARCHAR(5),
+    CompanyEmail    VARCHAR(50),
+    CompanyName     VARCHAR(50),
 
     PRIMARY KEY (TransportNumber, OrderNumber, CostumerNIF),
     FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE
@@ -190,9 +191,9 @@ CREATE TABLE Project.CONTACT_TRANSPORT(
     OrderNumber     INT NOT NULL,
     CostumerNIF     CHAR(9) NOT NULL,
     ContactDate     DATETIME,
-    ContactDescription  VARCHAR(200)
+    ContactDescription  VARCHAR(200),
 
-    PRIMARY KEY (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
+    -- PRIMARY KEY (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
     FOREIGN KEY (TransportNumber, OrderNumber, CostumerNIF) REFERENCES Project.TRANSPORT (TransportNumber, OrderNumber, CostumerNIF) ON UPDATE CASCADE
 );
