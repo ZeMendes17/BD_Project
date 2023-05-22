@@ -32,9 +32,10 @@
             this.subtitle = new System.Windows.Forms.Label();
             this.login = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.showBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // title
@@ -87,15 +88,15 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox2
+            // passwordBox
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(606, 360);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(292, 22);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordBox.Location = new System.Drawing.Point(606, 360);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.PasswordChar = '*';
+            this.passwordBox.Size = new System.Drawing.Size(292, 22);
+            this.passwordBox.TabIndex = 5;
+            this.passwordBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -110,14 +111,22 @@
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox3
+            // usernameBox
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Location = new System.Drawing.Point(606, 291);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(292, 22);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.usernameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.usernameBox.Location = new System.Drawing.Point(606, 291);
+            this.usernameBox.Name = "usernameBox";
+            this.usernameBox.Size = new System.Drawing.Size(292, 22);
+            this.usernameBox.TabIndex = 7;
+            this.usernameBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // showBox
+            // 
+            this.showBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.showBox.Location = new System.Drawing.Point(606, 540);
+            this.showBox.Name = "showBox";
+            this.showBox.Size = new System.Drawing.Size(292, 22);
+            this.showBox.TabIndex = 9;
             // 
             // Form1
             // 
@@ -126,15 +135,17 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1354, 731);
+            this.Controls.Add(this.showBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.login);
             this.Controls.Add(this.subtitle);
             this.Controls.Add(this.title);
             this.Name = "Form1";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,9 +157,10 @@
         private System.Windows.Forms.Label subtitle;
         private System.Windows.Forms.Button login;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox usernameBox;
+        private System.Windows.Forms.TextBox showBox;
     }
 }
 
