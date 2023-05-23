@@ -100,7 +100,6 @@ namespace BusinessManagerInterface
                 //Console.WriteLine(dbname);
                 if(dbname == username && dbpass == password)
                 {
-
                     NIF = rdr["UserNIF"].ToString();
                     break;
                 }
@@ -108,7 +107,7 @@ namespace BusinessManagerInterface
             rdr.Close();
             if(NIF != null)
             {
-                showBox.Text = "Found user" + NIF;
+                //showBox.Text = "Found user" + NIF;
 
                 cmd = new SqlCommand("SELECT * FROM Project.MANAGER", cn);
                 rdr = cmd.ExecuteReader();
@@ -119,7 +118,7 @@ namespace BusinessManagerInterface
 
                     if (dbNIF == NIF)
                     {
-                        showBox.Text = showBox.Text + " --> MANAGER";
+                        //showBox.Text = showBox.Text + " --> MANAGER";
                     }
                 }
                 rdr.Close();
@@ -133,11 +132,47 @@ namespace BusinessManagerInterface
 
                     if (dbNIF == NIF)
                     {
-                        showBox.Text = showBox.Text + " --> STAFF";
+                        //showBox.Text = showBox.Text + " --> STAFF";
+                        staff = true;
                     }
                 }
                 rdr.Close();
-            } else { showBox.Text = "";}
+            } // else { showBox.Text = "";}
+
+            if (staff)
+            {
+                cmd = new SqlCommand("SELECT * FROM Project.getStaffInfo(@param)", cn);
+                cmd.Parameters.AddWithValue("@param", NIF);
+                //cn.Open();
+
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Staff S = new Staff(rdr["NIF"].ToString(), Convert.ToInt32(rdr["ID"]));
+                    S.Address = rdr["Address"].ToString();
+                    S.Name = rdr["PName"].ToString();
+                    S.Phone = rdr["PhoneNumb"].ToString();
+                    S.Email = rdr["Email"].ToString();
+                    S.Birthdate = rdr["BirthDate"].ToString();
+                    S.RegisterDate = rdr["RegisterDate"].ToString();
+                    S.Password = rdr["UserPassword"].ToString();
+                    S.Username = rdr["UserName"].ToString();
+                    S.Salary = Convert.ToDouble(rdr["Salary"]);
+                    S.Url = rdr["StoreURL"].ToString();
+                    //showBox.Text = " --> " + S.Name + " " + S.Email;
+                    staff = false;
+                    // para abrir a janela da Staff (esconde esta entretanto e fecha quando este fechar também)
+                    this.Hide();
+                    StaffForm form = new StaffForm();
+                    form.FormClosed += (s, args) => this.Close();
+                    form.Show();
+                }
+                rdr.Close();
+            }
+            if(manager)
+            {
+                // codigo similar ao de cima
+            }
 
             cn.Close();
         }
@@ -148,6 +183,11 @@ namespace BusinessManagerInterface
             {
                 but.PerformClick();
             }
+        }
+
+        private void showBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

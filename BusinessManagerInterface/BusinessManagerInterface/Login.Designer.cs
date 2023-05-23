@@ -35,7 +35,6 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.showBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // title
@@ -68,7 +67,7 @@
             this.but.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.but.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but.Location = new System.Drawing.Point(798, 424);
-            this.but.Name = "login";
+            this.but.Name = "but";
             this.but.Size = new System.Drawing.Size(100, 40);
             this.but.TabIndex = 2;
             this.but.Text = "Log In";
@@ -120,14 +119,6 @@
             this.usernameBox.TabIndex = 7;
             this.usernameBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // showBox
-            // 
-            this.showBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.showBox.Location = new System.Drawing.Point(606, 540);
-            this.showBox.Name = "showBox";
-            this.showBox.Size = new System.Drawing.Size(292, 22);
-            this.showBox.TabIndex = 9;
-            // 
             // Login
             // 
             this.AcceptButton = this.but;
@@ -136,7 +127,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1354, 731);
-            this.Controls.Add(this.showBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.label2);
@@ -162,7 +152,6 @@
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox usernameBox;
-        private System.Windows.Forms.TextBox showBox;
     }
 }
 
