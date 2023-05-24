@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessManagerInterface
 {
-    internal class Person
+    public class Person
     {
         private String _NIF;
         private String _address;

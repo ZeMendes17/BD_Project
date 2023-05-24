@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessManagerInterface
 {
-    internal class Staff : User
+    public class Staff : User
     {
         private string _url;
 

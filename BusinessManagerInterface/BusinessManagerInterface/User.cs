@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BusinessManagerInterface
 {
 
-    internal class User : Person
+    public class User : Person
     {
 
         private int _ID;

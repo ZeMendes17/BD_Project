@@ -66,7 +66,7 @@
             this.but.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.but.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.but.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.but.Location = new System.Drawing.Point(798, 424);
+            this.but.Location = new System.Drawing.Point(798, 425);
             this.but.Name = "but";
             this.but.Size = new System.Drawing.Size(100, 40);
             this.but.TabIndex = 2;
@@ -79,7 +79,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(493, 357);
+            this.label2.Location = new System.Drawing.Point(493, 358);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 24);
             this.label2.TabIndex = 6;
@@ -90,7 +90,7 @@
             // passwordBox
             // 
             this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordBox.Location = new System.Drawing.Point(606, 360);
+            this.passwordBox.Location = new System.Drawing.Point(606, 361);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(292, 22);
@@ -102,7 +102,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(493, 288);
+            this.label3.Location = new System.Drawing.Point(493, 289);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 24);
             this.label3.TabIndex = 8;
@@ -113,7 +113,7 @@
             // usernameBox
             // 
             this.usernameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.usernameBox.Location = new System.Drawing.Point(606, 291);
+            this.usernameBox.Location = new System.Drawing.Point(606, 292);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(292, 22);
             this.usernameBox.TabIndex = 7;
@@ -126,7 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1354, 731);
+            this.ClientSize = new System.Drawing.Size(1354, 732);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.label2);

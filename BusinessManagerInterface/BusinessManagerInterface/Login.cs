@@ -164,6 +164,7 @@ namespace BusinessManagerInterface
                     // para abrir a janela da Staff (esconde esta entretanto e fecha quando este fechar também)
                     this.Hide();
                     StaffForm form = new StaffForm();
+                    form.St = S;
                     form.FormClosed += (s, args) => this.Close();
                     form.Show();
                 }
