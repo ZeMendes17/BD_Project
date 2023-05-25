@@ -56,6 +56,27 @@ namespace BusinessManagerInterface
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             dataGridPending.DataSource = dt;
+
+            cmd = new SqlCommand("Project.getOrdersFromStore", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@store", St.Url);
+            cmd.Parameters.AddWithValue("@state", "Shipped");
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridShipped.DataSource = dt;
+
+            cmd = new SqlCommand("Project.getOrdersFromStore", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@store", St.Url);
+            cmd.Parameters.AddWithValue("@state", "Delivered");
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridDelivered.DataSource = dt;
+
+            // items gridView
+            dataGridItems.Hide();
         }
 
         private void StaffForm_Adjust(object sender, EventArgs e)
@@ -99,6 +120,51 @@ namespace BusinessManagerInterface
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridPending_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow selectedRow = dataGridPending.Rows[e.RowIndex];
+            Label l = new Label();
+            l.Text = selectedRow.Cells["CostumerNIF"].Value.ToString();
+            l.AutoSize = true;
+            panel1.Controls.Add(l);
+        }
+
+        private void dataGridShipped_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow selectedRow = dataGridShipped.Rows[e.RowIndex];
+            String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
+            SqlDataReader rdr = cmd.ExecuteReader();
+            
+            while (rdr.Read())
+            {
+                if (rdr["NIF"].ToString() == costumerNIF )
+                {
+                    labelDetails.AutoSize = true;
+                    labelDetails.Text = "Name: " + rdr["Pname"].ToString() + "\n\n";
+                    labelDetails.Text += "NIF: " + costumerNIF + "\n\n";
+                    labelDetails.Text += "Address: " + rdr["Address"].ToString() + "\n\n";
+                    labelDetails.Text += "Phone Number: " + rdr["PhoneNumb"].ToString() + "\n\n";
+                    labelDetails.Text += "Email: " + rdr["Email"].ToString() + "\n\n";
+                    labelDetails.Text += "\n" + "Ordered Items:";
+
+                    panel1.Controls.Add(labelDetails);
+
+                    dataGridItems.Show();
+                    dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
+
+                    // usar uma view se calhar que una essas duas tabelas de modo a dar display aos items direitinhos
+                }
+            }
+            rdr.Close();
+        }
+
+        private void Panel1_SizeChanged(object sender, EventArgs e)
+        {
+            dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
         }
     }
 }

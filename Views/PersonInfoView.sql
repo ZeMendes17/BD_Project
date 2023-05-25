@@ -1,0 +1,4 @@
+    -- CREATE VIEW PersonInfoView
+    -- AS
+    --     SELECT *
+    --     FROM Project.Person JOIN Project.
