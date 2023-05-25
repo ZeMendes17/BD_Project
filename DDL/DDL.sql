@@ -159,13 +159,14 @@ CREATE TABLE Project.SUPPLIES(
 );
 
 CREATE TABLE Project.CONTACT_SUPPLIER (
+    ContactID           INT NOT NULL,
     ManagerNIF          CHAR(9) NOT NULL,
     ManagerID           INT NOT NULL,
     SupplierID          INT NOT NULL,
     ContactDate         DATETIME,
     ContactDescription  VARCHAR(200),
 
-    -- PRIMARY KEY (ManagerNIF, ManagerID, SupplierID),
+    PRIMARY KEY (ContactID,ManagerNIF, ManagerID, SupplierID),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
     FOREIGN KEY (SupplierID) REFERENCES Project.SUPPLIER (ID) ON UPDATE CASCADE
 );
@@ -185,6 +186,7 @@ CREATE TABLE Project.TRANSPORT(
 );
 
 CREATE TABLE Project.CONTACT_TRANSPORT(
+    ContactID       INT NOT NULL,
     ManagerNIF      CHAR(9) NOT NULL,
     ManagerID       INT NOT NULL,
     TransportNumber INT NOT NULL,
@@ -193,7 +195,7 @@ CREATE TABLE Project.CONTACT_TRANSPORT(
     ContactDate     DATETIME,
     ContactDescription  VARCHAR(200),
 
-    -- PRIMARY KEY (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
+    PRIMARY KEY (ContactID,ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
     FOREIGN KEY (TransportNumber, OrderNumber, CostumerNIF) REFERENCES Project.TRANSPORT (TransportNumber, OrderNumber, CostumerNIF) ON UPDATE CASCADE
 );
