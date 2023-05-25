@@ -85,10 +85,10 @@ namespace BusinessManagerInterface
                 , tabControl1.ItemSize.Height);
 
             this.tabControl2.Width = this.Width / 2;
-            
-            this.panel1.Width= this.Width / 2;
-            this.panel1.Location = new Point(Width/2, 69);
-            this.tabControl2.Location = new Point(0, 69-28);
+
+            this.panel1.Width = this.Width / 2;
+            this.panel1.Location = new Point(Width / 2, 69);
+            this.tabControl2.Location = new Point(0, 69 - 28);
         }
 
 
@@ -124,54 +124,185 @@ namespace BusinessManagerInterface
 
         private void dataGridPending_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow selectedRow = dataGridPending.Rows[e.RowIndex];
-            Label l = new Label();
-            l.Text = selectedRow.Cells["CostumerNIF"].Value.ToString();
-            l.AutoSize = true;
-            panel1.Controls.Add(l);
-        }
-
-        private void dataGridShipped_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow selectedRow = dataGridShipped.Rows[e.RowIndex];
-            String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
-            bool flag = false;
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
-            SqlDataReader rdr = cmd.ExecuteReader();
-            
-            while (rdr.Read())
+            try
             {
-                if (rdr["NIF"].ToString() == costumerNIF )
-                {
-                    labelDetails.AutoSize = true;
-                    labelDetails.Text = "Name: " + rdr["Pname"].ToString() + "\n\n";
-                    labelDetails.Text += "NIF: " + costumerNIF + "\n\n";
-                    labelDetails.Text += "Address: " + rdr["Address"].ToString() + "\n\n";
-                    labelDetails.Text += "Phone Number: " + rdr["PhoneNumb"].ToString() + "\n\n";
-                    labelDetails.Text += "Email: " + rdr["Email"].ToString() + "\n\n";
-                    labelDetails.Text += "\n" + "Ordered Items:";
+                DataGridViewRow selectedRow = dataGridPending.Rows[e.RowIndex];
+                String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
+                String orderNum = selectedRow.Cells["OrderNumber"].Value.ToString();
+                bool flag = false;
 
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    if (rdr["NIF"].ToString() == costumerNIF)
+                    {
+                        labelDetails.AutoSize = true;
+                        labelDetails.Text = "Name: " + rdr["Pname"].ToString() + "\n\n";
+                        labelDetails.Text += "NIF: " + costumerNIF + "\n\n";
+                        labelDetails.Text += "Address: " + rdr["Address"].ToString() + "\n\n";
+                        labelDetails.Text += "Phone Number: " + rdr["PhoneNumb"].ToString() + "\n\n";
+                        labelDetails.Text += "Email: " + rdr["Email"].ToString() + "\n\n\n";
+                        flag = true;
+                    }
+                }
+                rdr.Close();
+
+                if (flag)
+                {
+                    labelDetails.Text += "\n" + "Ordered Items (click on product to check availability):";
                     panel1.Controls.Add(labelDetails);
 
                     dataGridItems.Show();
                     dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
 
-                    // usar uma view se calhar que una essas duas tabelas de modo a dar display aos items direitinhos
-                    flag = true;
+                    cmd = new SqlCommand("SELECT ItemID, ItemDescription, Quantity, Price FROM Project.ItemsInOrderView WHERE OrderNumber=@order", cn);
+                    cmd.Parameters.AddWithValue("@order", int.Parse(orderNum));
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridItems.DataSource = dt;
+
+                    flag = false;
                 }
             }
-            rdr.Close();
-
-            if (flag)
+            catch (System.ArgumentOutOfRangeException)
             {
-                cmd = new SqlCommand("SELECT ItemID, ItemDescription, Quantity, Price FROM Project.ItemsInOrderView WHERE OrderNumber=@order", cn);
-                cmd.Parameters.AddWithValue("@order", int.Parse(selectedRow.Cells["OrderNumber"].Value.ToString()));
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                dataGridItems.DataSource = dt;
+            }
+        }
+
+        private void dataGridShipped_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow selectedRow = dataGridShipped.Rows[e.RowIndex];
+                String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
+                String orderNum = selectedRow.Cells["OrderNumber"].Value.ToString();
+                bool flag = false;
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    if (rdr["NIF"].ToString() == costumerNIF)
+                    {
+                        labelDetails.AutoSize = true;
+                        labelDetails.Text = "Name: " + rdr["Pname"].ToString() + "\n\n";
+                        labelDetails.Text += "NIF: " + costumerNIF + "\n\n";
+                        labelDetails.Text += "Address: " + rdr["Address"].ToString() + "\n\n";
+                        labelDetails.Text += "Phone Number: " + rdr["PhoneNumb"].ToString() + "\n\n";
+                        labelDetails.Text += "Email: " + rdr["Email"].ToString() + "\n\n\n";
+                        flag = true;
+                    }
+                }
+                rdr.Close();
+
+                if (flag)
+                {
+                    cmd = new SqlCommand("SELECT * FROM Project.TRANSPORT", cn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (rdr["OrderNumber"].ToString() == orderNum)
+                        {
+                            labelDetails.Text += "Delivery Company: " + rdr["CompanyName"] + ", " + rdr["CompanyEmail"] + "\n\n";
+                            labelDetails.Text += "Transportation Method: " + rdr["Method"] + "\n\n";
+                            labelDetails.Text += "Transport Number: " + rdr["TransportNumber"] + "\n\n";
+                        }
+                    }
+                    rdr.Close();
+
+
+                    labelDetails.Text += "\n" + "Ordered Items:";
+                    panel1.Controls.Add(labelDetails);
+
+                    dataGridItems.Show();
+                    dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
+
+                    cmd = new SqlCommand("SELECT ItemID, ItemDescription, Quantity, Price FROM Project.ItemsInOrderView WHERE OrderNumber=@order", cn);
+                    cmd.Parameters.AddWithValue("@order", int.Parse(orderNum));
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridItems.DataSource = dt;
+
+                    flag = false;
+                }
+            }
+            catch(System.ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void dataGridDelivered_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow selectedRow = dataGridDelivered.Rows[e.RowIndex];
+                String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
+                String orderNum = selectedRow.Cells["OrderNumber"].Value.ToString();
+                bool flag = false;
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    if (rdr["NIF"].ToString() == costumerNIF)
+                    {
+                        labelDetails.AutoSize = true;
+                        labelDetails.Text = "Name: " + rdr["Pname"].ToString() + "\n\n";
+                        labelDetails.Text += "NIF: " + costumerNIF + "\n\n";
+                        labelDetails.Text += "Address: " + rdr["Address"].ToString() + "\n\n";
+                        labelDetails.Text += "Phone Number: " + rdr["PhoneNumb"].ToString() + "\n\n";
+                        labelDetails.Text += "Email: " + rdr["Email"].ToString() + "\n\n\n";
+                        flag = true;
+                    }
+                }
+                rdr.Close();
+
+                if (flag)
+                {
+                    cmd = new SqlCommand("SELECT * FROM Project.TRANSPORT", cn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (rdr["OrderNumber"].ToString() == orderNum)
+                        {
+                            labelDetails.Text += "Delivery Company: " + rdr["CompanyName"] + ", " + rdr["CompanyEmail"] + "\n\n";
+                            labelDetails.Text += "Transportation Method: " + rdr["Method"] + "\n\n";
+                            labelDetails.Text += "Transport Number: " + rdr["TransportNumber"] + "\n\n";
+                        }
+                    }
+                    rdr.Close();
+
+
+                    labelDetails.Text += "\n" + "Ordered Items:";
+                    panel1.Controls.Add(labelDetails);
+
+                    dataGridItems.Show();
+                    dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
+
+                    cmd = new SqlCommand("SELECT ItemID, ItemDescription, Quantity, Price FROM Project.ItemsInOrderView WHERE OrderNumber=@order", cn);
+                    cmd.Parameters.AddWithValue("@order", int.Parse(orderNum));
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridItems.DataSource = dt;
+
+                    flag = false;
+                }
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+
             }
         }
 
@@ -179,10 +310,17 @@ namespace BusinessManagerInterface
         {
             dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
         }
-
-        private void dataGridItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (tabControl2.SelectedTab == tabPage4)
+            {
+                manageButton.Visible = true;
+            }
+            else
+            {
+                manageButton.Visible = false;
+            }
         }
+
     }
 }
