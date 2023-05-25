@@ -135,6 +135,7 @@ namespace BusinessManagerInterface
         {
             DataGridViewRow selectedRow = dataGridShipped.Rows[e.RowIndex];
             String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
+            bool flag = false;
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
             SqlDataReader rdr = cmd.ExecuteReader();
@@ -157,14 +158,31 @@ namespace BusinessManagerInterface
                     dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
 
                     // usar uma view se calhar que una essas duas tabelas de modo a dar display aos items direitinhos
+                    flag = true;
                 }
             }
             rdr.Close();
+
+            if (flag)
+            {
+                cmd = new SqlCommand("SELECT ItemID, ItemDescription, Quantity, Price FROM Project.ItemsInOrderView WHERE OrderNumber=@order", cn);
+                cmd.Parameters.AddWithValue("@order", int.Parse(selectedRow.Cells["OrderNumber"].Value.ToString()));
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridItems.DataSource = dt;
+            }
         }
 
         private void Panel1_SizeChanged(object sender, EventArgs e)
         {
             dataGridItems.Height = panel1.Height - labelDetails.Height - 20;
+        }
+
+        private void dataGridItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
