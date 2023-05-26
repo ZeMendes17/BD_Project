@@ -20,6 +20,8 @@ namespace BusinessManagerInterface
         String userName = "p5g4";
         String userPass = "Bz105107!";
 
+        int orderID;
+
         public Staff St { get; set; }
         public StaffForm()
         {
@@ -124,6 +126,7 @@ namespace BusinessManagerInterface
                 DataGridViewRow selectedRow = dataGridPending.Rows[e.RowIndex];
                 String costumerNIF = selectedRow.Cells["CostumerNIF"].Value.ToString();
                 String orderNum = selectedRow.Cells["OrderNumber"].Value.ToString();
+                orderID = int.Parse(orderNum);
                 bool flag = false;
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Project.PERSON", cn);
@@ -401,6 +404,18 @@ namespace BusinessManagerInterface
             {
 
             }
+        }
+
+        private void manageButton_Click(object sender, EventArgs e)
+        {
+            // fazer query com o orderID que vai buscar os items da order e os mete no array
+            // po-lo publico
+            // de seguida comparar com o stock do produto a quantidade, se puder aparece aproved
+            // se nao aparece no stock
+            // bloquear os botoes ou assim
+            // depois alterar o estado do pedido "shipping, canceled"
+            // e ta, depois é so a personal area
+
         }
     }
 }
