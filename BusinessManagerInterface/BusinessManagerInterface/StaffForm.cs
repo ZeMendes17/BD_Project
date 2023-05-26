@@ -75,6 +75,14 @@ namespace BusinessManagerInterface
             adapter.Fill(dt);
             dataGridDelivered.DataSource = dt;
 
+            // items in stock
+            cmd = new SqlCommand("SELECT ID, ItemDescription AS Product, Quantity AS InStock, Price FROM Project.ITEM WHERE StoreURL=@store", cn);
+            cmd.Parameters.AddWithValue("@store", St.Url);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            ItemsDataGridView.DataSource = dt;
+
             // items gridView
             dataGridItems.Hide();
         }
@@ -89,25 +97,12 @@ namespace BusinessManagerInterface
             this.panel1.Width = this.Width / 2;
             this.panel1.Location = new Point(Width / 2, 69);
             this.tabControl2.Location = new Point(0, 69 - 28);
+            
+            this.ItemsDataGridView.Height = this.tabControl1.Height - 100;
         }
 
 
         private void tabPage3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
@@ -322,5 +317,90 @@ namespace BusinessManagerInterface
             }
         }
 
+        // for stock items display
+        private void itemDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ItemForm form = new ItemForm();
+                DataGridViewRow selectedRow = ItemsDataGridView.Rows[e.RowIndex];
+                int itemID = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+                Console.WriteLine(itemID);
+                Item i = new Item(itemID);
+                i.Name = selectedRow.Cells["Product"].Value.ToString();
+                i.Price = double.Parse(selectedRow.Cells["Price"].Value.ToString());
+                i.Quantity = int.Parse(selectedRow.Cells["InStock"].Value.ToString());
+                form.item = i;
+                form.Show();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void itemSearchChange(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in ItemsDataGridView.Rows)
+            {
+                row.Visible = true;
+            }
+
+            string searchTerm = itemSearch.Text.ToLower();
+            string selected = itemFilter.Text;
+            int colIndex;
+
+            if (selected == null)
+            {
+                return;
+            }
+            else
+            {
+                if(selected.Equals("ID"))
+                {
+                    colIndex = 0;
+                } else {
+                    colIndex = 1;
+                }
+            }
+            foreach (DataGridViewRow row in ItemsDataGridView.Rows)
+            {
+                bool rowVisible = false;
+                if (row.Cells[colIndex].Value.ToString().ToLower().Contains(searchTerm))
+                {
+                    Console.WriteLine(searchTerm + " --> " + row.Cells[colIndex].Value.ToString());
+                    rowVisible = true;
+                }
+
+                if (!rowVisible)
+                {
+                    CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[ItemsDataGridView.DataSource];
+                    currencyManager1.SuspendBinding();
+
+                    row.Visible = rowVisible;
+                }
+            }
+        }
+
+        private void dataGridItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ItemForm form = new ItemForm();
+                DataGridViewRow selectedRow = dataGridItems.Rows[e.RowIndex];
+                int itemID = int.Parse(selectedRow.Cells["ItemID"].Value.ToString());
+                Console.WriteLine(itemID);
+                Item i = new Item(itemID);
+                i.Name = selectedRow.Cells["ItemDescription"].Value.ToString();
+                i.Price = double.Parse(selectedRow.Cells["Price"].Value.ToString());
+                i.Quantity = int.Parse(selectedRow.Cells["Quantity"].Value.ToString());
+                form.item = i;
+                form.Show();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+
+            }
+        }
     }
 }
