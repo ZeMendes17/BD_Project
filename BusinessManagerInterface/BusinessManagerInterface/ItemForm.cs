@@ -52,7 +52,7 @@ namespace BusinessManagerInterface
         {
             cn = getSGBDConnection();
             verifySGBDConnection();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM ItemSupplierView WHERE ItemID=@id", cn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Project.ItemSupplierView WHERE ItemID=@id", cn);
             cmd.Parameters.AddWithValue("@id", item.ID);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

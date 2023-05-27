@@ -1,4 +1,4 @@
-CREATE VIEW ItemSupplierView
+CREATE VIEW Project.ItemSupplierView
 AS
-	SELECT SupplierID, ID, SupName, Email, SupLocation
+	SELECT SupplierID, ItemID, SupName, Email, SupLocation
     FROM Project.SUPPLIES JOIN Project.SUPPLIER ON SupplierID=ID

@@ -96,6 +96,9 @@ namespace BusinessManagerInterface
 
             // items gridView
             dataGridItems.Hide();
+
+            // call Personal Area
+            PersonalArea(sender, e);
         }
 
         private void StaffForm_Adjust(object sender, EventArgs e)
@@ -110,12 +113,6 @@ namespace BusinessManagerInterface
             this.tabControl2.Location = new Point(0, 69 - 28);
             
             this.ItemsDataGridView.Height = this.tabControl1.Height - 100;
-        }
-
-
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -505,6 +502,83 @@ namespace BusinessManagerInterface
         private void closeManage(object sender, EventArgs e)
         {
             this.StaffForm_Load(sender, e);
+        }
+
+        private void PersonalArea(object sender, EventArgs e)
+        {
+            // add side scroll in this labe
+
+            this.StaffName.Text = "Welcome, " + St.Name + " (" + St.Username + ")"; // name
+            this.StaffInfo.Text = "ID: " + St.ID + "\n\n";
+            this.StaffInfo.Text += "NIF: " + St.NIF + "\n\n";
+            this.StaffInfo.Text += "Email: " + St.Email + "\n\n";
+            this.StaffInfo.Text += "Phone Number: " + St.Phone + "\n\n";
+            this.StaffInfo.Text += "Address: " + St.Address + "\n\n";
+            this.StaffInfo.Text += "Salary: " + St.Salary + " euros" + "\n\n";
+            this.StaffInfo.Text += "Register Date: " + St.RegisterDate + "\n\n";
+            this.StaffInfo.Text += "Birth Date: " + St.Birthdate + "\n\n";
+            this.StaffInfo.Text += "Store: " + St.Url + "\n\n\n";
+
+            this.StaffInfo.Text += "STATS: " + "\n\n";
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Project.StaffTotalStatsView WHERE StaffNIF=@nif", cn);
+            cmd.Parameters.AddWithValue("@nif", St.NIF);
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                this.StaffInfo.Text += "Total Orders: " + rdr["TotalOrders"].ToString() + "\n\n";
+                this.StaffInfo.Text += "Total Revenue: " + rdr["TotalMoney"].ToString() + "\n\n";
+            }   
+            rdr.Close();
+
+            cmd = new SqlCommand("SELECT * FROM Project.StaffStatsPerMonthView WHERE StaffNIF=@nif", cn);
+            cmd.Parameters.AddWithValue("@nif", St.NIF);
+            rdr = cmd.ExecuteReader();
+            double best = 0;
+            int bestMonth = 0;
+            while (rdr.Read())
+            {
+                if (double.Parse(rdr["TotalPrice"].ToString()) > best)
+                {
+                    best = double.Parse(rdr["TotalPrice"].ToString());
+                    bestMonth = int.Parse(rdr["Month"].ToString());
+                }
+            }
+
+            if(best != 0)
+            {
+                DateTime date = new DateTime(DateTime.Now.Year, bestMonth, 1);
+                this.StaffInfo.Text += "Best Month: " + date.ToString("MMMM") + ", Total Revenue of: " + best.ToString() + " euros" + "\n\n";
+            }
+            rdr.Close();
+
+            cmd = new SqlCommand("SELECT * FROM Project.StaffItemStatsView WHERE StaffNIF=@nif", cn);
+            cmd.Parameters.AddWithValue("@nif", St.NIF);
+            rdr = cmd.ExecuteReader();
+            int bestSeller = 0;
+            String bestSellerName = "";
+            double mostRevenue = 0;
+            String mostRevenueName = "";
+            while (rdr.Read())
+            {
+                if (int.Parse(rdr["TotalNumItems"].ToString()) > bestSeller)
+                {
+                    bestSeller = int.Parse(rdr["TotalNumItems"].ToString());
+                    bestSellerName = rdr["ItemDescription"].ToString();
+                }
+                if (double.Parse(rdr["TotalItemSales"].ToString()) > mostRevenue)
+                {
+                    mostRevenue = double.Parse(rdr["TotalItemSales"].ToString());
+                    mostRevenueName = rdr["ItemDescription"].ToString();
+                }
+            }
+            if(bestSeller != 0 && mostRevenue != 0)
+            {
+                this.StaffInfo.Text += "Best Seller: " + bestSellerName + ", Total Number of Sales: " + bestSeller.ToString() + "\n\n";
+                this.StaffInfo.Text += "Most Revenue: " + mostRevenueName + ", Total Revenue of: " + mostRevenue.ToString() + " euros" + "\n\n";
+            }
+            
+            rdr.Close();
         }
     }
 }
