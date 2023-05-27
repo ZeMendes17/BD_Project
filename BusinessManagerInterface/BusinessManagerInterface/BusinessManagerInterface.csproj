@@ -53,6 +53,7 @@
       <DependentUpon>ItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
+    <Compile Include="OrderedItem.cs" />
     <Compile Include="StaffForm.cs">
       <SubType>Form</SubType>
     </Compile>
