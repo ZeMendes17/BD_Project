@@ -11,8 +11,6 @@ AS
         DECLARE @ManagerNIF CHAR(9);
         DECLARE @ManagerID INT;
         DECLARE @TransportNumber INT;
-        DECLARE @OrderNumber INT;
-        DECLARE @CostumerNIF CHAR(9);
         DECLARE @ContactDate DATETIME;
         DECLARE @ContactDescription VARCHAR(200);
 
@@ -23,9 +21,9 @@ AS
         ELSE
             SET @ContactID = @ContactID + 1;
             
-        SELECT @ManagerID = ManagerID, @ManagerNIF = ManagerNIF, @TransportNumber = TransportNumber, @ContactDate = ContactDate, @ContactDescription = ContactDescription, @OrderNumber = OrderNumber, @CostumerNIF = CostumerNIF
+        SELECT @ManagerID = ManagerID, @ManagerNIF = ManagerNIF, @TransportNumber = TransportNumber, @ContactDate = ContactDate, @ContactDescription = ContactDescription
         FROM inserted;
 
-        INSERT INTO Project.CONTACT_TRANSPORT (ContactID, ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF, ContactDate, ContactDescription)
-        VALUES (@ContactID, @ManagerNIF, @ManagerID, @TransportNumber, @OrderNumber, @CostumerNIF, @ContactDate, @ContactDescription);
+        INSERT INTO Project.CONTACT_TRANSPORT (ContactID, ManagerNIF, ManagerID, TransportNumber, ContactDate, ContactDescription)
+        VALUES (@ContactID, @ManagerNIF, @ManagerID, @TransportNumber, @ContactDate, @ContactDescription);
     END;

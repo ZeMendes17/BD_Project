@@ -173,16 +173,13 @@ CREATE TABLE Project.CONTACT_SUPPLIER (
 
 CREATE TABLE Project.TRANSPORT(
     TransportNumber INT NOT NULL,
-    OrderNumber     INT NOT NULL,
-    CostumerNIF     CHAR(9) NOT NULL,
     Availabilty     BINARY,
     Cost            DECIMAL(6,2),
     Method          VARCHAR(5),
     CompanyEmail    VARCHAR(50),
     CompanyName     VARCHAR(50),
 
-    PRIMARY KEY (TransportNumber, OrderNumber, CostumerNIF),
-    FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE
+    PRIMARY KEY (TransportNumber),
 );
 
 CREATE TABLE Project.CONTACT_TRANSPORT(
@@ -190,12 +187,10 @@ CREATE TABLE Project.CONTACT_TRANSPORT(
     ManagerNIF      CHAR(9) NOT NULL,
     ManagerID       INT NOT NULL,
     TransportNumber INT NOT NULL,
-    OrderNumber     INT NOT NULL,
-    CostumerNIF     CHAR(9) NOT NULL,
     ContactDate     DATETIME,
     ContactDescription  VARCHAR(200),
 
-    PRIMARY KEY (ContactID,ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF),
+    PRIMARY KEY (ContactID, ManagerNIF, ManagerID, TransportNumber),
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
-    FOREIGN KEY (TransportNumber, OrderNumber, CostumerNIF) REFERENCES Project.TRANSPORT (TransportNumber, OrderNumber, CostumerNIF) ON UPDATE CASCADE
+    FOREIGN KEY (TransportNumber) REFERENCES Project.TRANSPORT (TransportNumber) ON UPDATE CASCADE
 );
