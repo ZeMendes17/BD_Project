@@ -26,7 +26,7 @@ EXEC p5g4.Project.addCostumer '219384657', '890 Maple Court', 'Olivia Harris', '
 EXEC p5g4.Project.addCostumer '237894561', '123 Cedar Avenue', 'Daniel Turner', '955678901', 'daniel.turner@example.com', '1998-08-12';
 EXEC p5g4.Project.addCostumer '214365879', '345 Birch Lane', 'Emily Clark', '966789012', 'emily.clark@example.com', '1991-11-27';
 EXEC p5g4.Project.addCostumer '281739465', '567 Pine Street', 'Benjamin Brown', '977890123', 'benjamin.brown@example.com', '1994-06-04';
-EXEC p5g4.Project.addCostumer '219384657', '789 Oak Avenue', 'Amelia Martinez', '988901234', 'amelia.martinez@example.com', '1997-02-19';
+EXEC p5g4.Project.addCostumer '303011301', '789 Oak Avenue', 'Amelia Martinez', '988901234', 'amelia.martinez@example.com', '1997-02-19';
 EXEC p5g4.Project.addCostumer '218374659', '432 Maple Lane', 'Henry Taylor', '999012345', 'henry.taylor@example.com', '1996-07-15';
 EXEC p5g4.Project.addCostumer '216598743', '654 Cedar Road', 'Charlotte Clark', '900123456', 'charlotte.clark@example.com', '1990-10-01';
 
@@ -47,10 +47,10 @@ EXEC p5g4.Project.addManager '123456123', '4 Estarreja', 'José Pereira', '92100
 EXEC p5g4.Project.addStaff '251236789', '511 Maple Court', 'Daniel Mark ', '982734654', 'daniel.mark@example.com', '1978-09-20', 'daniel!', 'DanielMark', 1000, 'https://www.hatit.com'
 EXEC p5g4.Project.addStaff '222222333', '324 Maple Avenue', 'Michael Collins', '982734639', 'mike.coll@example.com', '1962-05-05', 'mikeyZZ', 'MikeCollins', 2000, 'https://www.hatit.com'
 EXEC p5g4.Project.addStaff '190333456', '12 Forward Avenue', 'Jeff Stevens ', '911131234', 'jeffy.stv@example.com', '1987-02-25', 'jstv', 'JeffStevens', 2134, 'https://www.hatit.com'
-EXEC p5g4.Project.addStaff '251236789', '222 Oliveiras', 'Isabela Grey', '933445119', 'izzy.grey@example.com', '1994-08-21', 'izznono12', 'Isabela', 2670, 'https://www.hatit.com'
+EXEC p5g4.Project.addStaff '351236789', '222 Oliveiras', 'Isabela Grey', '933445119', 'izzy.grey@example.com', '1994-08-21', 'izznono12', 'Isabela', 2670, 'https://www.hatit.com'
 EXEC p5g4.Project.addStaff '200900800', '13 Azemeis', 'Manny Manos', '911345222', 'manny.manitos@example.com', '1996-10-09', 'maozinhas', 'Manny', 1670, 'https://www.weselltech.com'
 EXEC p5g4.Project.addStaff '234344333', '14 Cedar Avenue', 'Rafael Pinho', '911345331', 'rad.pi@example.com', '1998-12-17', 'rafapinh', 'Rafael', 1679.99, 'https://www.weselltech.com'
-EXEC p5g4.Project.addStaff '234344333', '111 Apple Cedar', 'Mark Roseberg', '999898797', 'roseberg@example.com', '1982-11-27', 'markyyy', 'M. Roseberg', 3200, 'https://www.weselltech.com'
+EXEC p5g4.Project.addStaff '234344334', '111 Apple Cedar', 'Mark Roseberg', '999898797', 'roseberg@example.com', '1982-11-27', 'markyyy', 'M. Roseberg', 3200, 'https://www.weselltech.com'
 EXEC p5g4.Project.addStaff '234333444', '111 Apple Cedar', 'Jenna Roseberg', '999898798', 'jroseberg@example.com', '1982-12-30', 'jenna:)', 'J. Roseberg', 3201, 'https://www.weselltech.com'
 EXEC p5g4.Project.addStaff '255567999', 'Rua do Canto, 12', 'Ricardo Santos', '900000124', 'rikky.angels@example.com', '1992-11-27', 'ricardito999', 'Ricardo', 2210, 'https://www.weselltech.com'
 EXEC p5g4.Project.addStaff '255544444', 'Rua da Esquina', 'Sebastian', '900100200', 'seb@example.com', '1973-04-14', '123seb123', 'Sebastian', 1999.99, 'https://www.weselltech.com'
@@ -109,7 +109,7 @@ INSERT INTO p5g4.Project.ITEM VALUES (18, 'Beret Hat', 29.99, 10, 'https://www.h
 INSERT INTO p5g4.Project.ITEM VALUES (19, 'Trucker Hat', 19.99, 15, 'https://www.hatit.com');
 INSERT INTO p5g4.Project.ITEM VALUES (20, 'Wide Brim Hat', 44.99, 8, 'https://www.hatit.com');
 
--- insert the order items into ITEM_ORDER --> 10
+-- insert the order items into ITEM_ORDER --> 9
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (1, '189654321', 1, 1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (2, '129743586', 6, 1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (3, '216598743', 6, 1);

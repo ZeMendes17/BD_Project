@@ -16,7 +16,7 @@ AS
         DECLARE @ContactDate DATETIME;
         DECLARE @ContactDescription VARCHAR(200);
 
-        SELECT @ContactID = MAX(ContactID) FROM Project.CONTACT_SUPPLIER;
+        SELECT @ContactID = MAX(ContactID) FROM Project.CONTACT_TRANSPORT;
         -- if the table is empty
         IF @ContactID IS NULL
             SET @ContactID = 1;
