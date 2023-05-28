@@ -1,7 +1,7 @@
 go
 -- 1) todos os manager's de uma loja:
 
-CREATE FUNCTION GetManagersByStoreName(@StoreName VARCHAR(20))
+CREATE FUNCTION Project.GetManagersByStoreName(@StoreName VARCHAR(20))
 RETURNS TABLE
 AS
 RETURN
@@ -24,7 +24,7 @@ go
 go
 -- 2) A lista da staff de uma loja e seus respetivos salarios:
 
-CREATE FUNCTION GetStaffByStoreName(@StoreName VARCHAR(50))
+CREATE FUNCTION Project.GetStaffByStoreName(@StoreName VARCHAR(50))
 RETURNS TABLE
 AS
 RETURN
@@ -48,7 +48,7 @@ go
 
 -- 3) Todas as lojas que tem determinado Manager como respons�vel:
 
-CREATE FUNCTION GetStoreByManagerID(@ManagerID INT)
+CREATE FUNCTION Project.GetStoreByManagerID(@ManagerID INT)
 RETURNS TABLE
 AS
 RETURN
@@ -73,7 +73,7 @@ go
 go
 -- 5) Lista de ordens em um determinado estado (Pending,shipped ou delivered):
 
-CREATE FUNCTION GetOrdersByState(@OrderState VARCHAR(15))
+CREATE FUNCTION Project.GetOrdersByState(@OrderState VARCHAR(15))
 RETURNS TABLE
 AS
 RETURN
@@ -88,24 +88,23 @@ go
 go
 -- 6) Nome e endere�o de um cliente em um pedido:
 
-CREATE FUNCTION GetCustomerByOrderNumber(@OrderNumber INT)
-RETURNS TABLE
-AS
-RETURN
-(
-    SELECT PName AS CustomerName, Address
-    FROM Project.COSTUMER c
-    JOIN Project.PERSON p ON c.CostumerNIF = p.NIF
-    JOIN Project.[ORDER] o ON c.CostumerNIF = o.CostumerNIF
-    WHERE o.OrderNumber = @OrderNumber
-);
+    CREATE FUNCTION Project.GetCustomerByOrderNumber(@OrderNumber INT)
+    RETURNS TABLE
+    AS
+    RETURN
+    (
+        SELECT PName AS CustomerName, Address
+        FROM Project.COSTUMER c
+        JOIN Project.PERSON p ON c.CostumerNIF = p.NIF
+        JOIN Project.[ORDER] o ON c.CostumerNIF = o.CostumerNIF
+        WHERE o.OrderNumber = @OrderNumber
+    );
 go
 
 
-go
 -- 7) Para cada loja, listar a quantidade e o pre�o m�dio de vendas em um determinado estado:
 
-CREATE FUNCTION GetStoreStatisticsByOrderState(@OrderState VARCHAR(15))
+CREATE FUNCTION Project.GetStoreStatisticsByOrderState(@OrderState VARCHAR(15))
 RETURNS TABLE
 AS
 RETURN
@@ -123,7 +122,7 @@ go
 go
 -- 8) Quantidade de itens de uma order:
 
-CREATE FUNCTION GetTotalItemsByOrderNumber(@OrderNumber INT)
+CREATE FUNCTION Project.GetTotalItemsByOrderNumber(@OrderNumber INT)
 RETURNS TABLE
 AS
 RETURN
@@ -139,7 +138,7 @@ go
 go
 -- 9) Listar todos os itens de um pedido, juntamente com suas descri��es e quantidades:
 
-CREATE FUNCTION GetItemsByOrderNumber(@OrderNumber INT)
+CREATE FUNCTION Project.GetItemsByOrderNumber(@OrderNumber INT)
 RETURNS TABLE
 AS
 RETURN
@@ -156,7 +155,7 @@ go
 go
 -- 10) Todos os itens fornecidos por uma determinada empresa:
 
-CREATE FUNCTION GetItemDescriptionBySupplierName(@SupName VARCHAR(50))
+CREATE FUNCTION Project.GetItemDescriptionBySupplierName(@SupName VARCHAR(50))
 RETURNS TABLE
 AS
 RETURN
@@ -173,7 +172,7 @@ go
 go
 -- 11) Informa��o do m�todo de envio de uma order:
 
-CREATE FUNCTION GetTransportInfoByOrderNumber(@OrderNumber INT)
+CREATE FUNCTION Project.GetTransportInfoByOrderNumber(@OrderNumber INT)
 RETURNS TABLE
 AS
 RETURN
@@ -189,7 +188,7 @@ go
 go
 -- 12) A lista dos contatos feitos por um manager com os transportes:
 
-CREATE FUNCTION GetContactTransportInfoByPName(@PName VARCHAR(50))
+CREATE FUNCTION Project.GetContactTransportInfoByPName(@PName VARCHAR(50))
 RETURNS TABLE
 AS
 RETURN
