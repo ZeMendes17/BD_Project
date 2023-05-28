@@ -12,7 +12,7 @@ RETURN
     JOIN Project.STORE s ON m.StoreURL = s.StoreURL
     WHERE s.StoreName = @StoreName
     UNION ALL
-    SELECT 'Loja não encontrada' AS PName
+    SELECT 'Loja nao encontrada' AS PName
     WHERE NOT EXISTS (
         SELECT 1
         FROM Project.STORE
@@ -46,7 +46,7 @@ go
 
 go
 
--- 3) Todas as lojas que tem determinado Manager como responsável:
+-- 3) Todas as lojas que tem determinado Manager como responsï¿½vel:
 
 CREATE FUNCTION GetStoreByManagerID(@ManagerID INT)
 RETURNS TABLE
@@ -86,7 +86,7 @@ go
 
 
 go
--- 6) Nome e endereço de um cliente em um pedido:
+-- 6) Nome e endereï¿½o de um cliente em um pedido:
 
 CREATE FUNCTION GetCustomerByOrderNumber(@OrderNumber INT)
 RETURNS TABLE
@@ -103,7 +103,7 @@ go
 
 
 go
--- 7) Para cada loja, listar a quantidade e o preço médio de vendas em um determinado estado:
+-- 7) Para cada loja, listar a quantidade e o preï¿½o mï¿½dio de vendas em um determinado estado:
 
 CREATE FUNCTION GetStoreStatisticsByOrderState(@OrderState VARCHAR(15))
 RETURNS TABLE
@@ -137,7 +137,7 @@ go
 
 
 go
--- 9) Listar todos os itens de um pedido, juntamente com suas descrições e quantidades:
+-- 9) Listar todos os itens de um pedido, juntamente com suas descriï¿½ï¿½es e quantidades:
 
 CREATE FUNCTION GetItemsByOrderNumber(@OrderNumber INT)
 RETURNS TABLE
@@ -171,7 +171,7 @@ go
 
 
 go
--- 11) Informação do método de envio de uma order:
+-- 11) Informaï¿½ï¿½o do mï¿½todo de envio de uma order:
 
 CREATE FUNCTION GetTransportInfoByOrderNumber(@OrderNumber INT)
 RETURNS TABLE

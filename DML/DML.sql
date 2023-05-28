@@ -75,7 +75,8 @@ INSERT INTO p5g4.Project.[ORDER] VALUES (6, '253619487', 89.97, 'Delivered', 3, 
 INSERT INTO p5g4.Project.[ORDER] VALUES (7, '123456789', 2199.97, 'Pending', 3, 'https://www.weselltech.com', '2023-07-05 09:00:00');
 INSERT INTO p5g4.Project.[ORDER] VALUES (8, '219384657', 203.94, 'Delivered', 6, 'https://www.hatit.com', '2023-07-05 09:00:00');
 INSERT INTO p5g4.Project.[ORDER] VALUES (9, '276981345', 3499.96, 'Shipped', 4, 'https://www.weselltech.com', '2023-07-05 09:00:00');
-INSERT INTO p5g4.Project.[ORDER] VALUES (10, '176543219', 4819.80, 'Shipped', 20, 'https://www.hatit.com', '2023-07-05 09:00:00');
+INSERT INTO p5g4.Project.[ORDER] VALUES (10, '176543219', 4479.90, 'Shipped', 10, 'https://www.weselltech.com', '2023-07-05 09:00:00');
+INSERT INTO p5g4.Project.[ORDER] VALUES (11, '176543219', 339.90, 'Shipped', 10, 'https://www.hatit.com', '2023-07-05 09:00:10');
 
 
 -- insert 6 orders to manages
@@ -145,16 +146,16 @@ INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',7,1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',8,1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',9,1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',10,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',11,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',12,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',13,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',14,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',15,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',16,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',17,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',18,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',19,1);
-INSERT INTO p5g4.Project.ITEM_ORDER VALUES (10, '176543219',20,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',11,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',12,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',13,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',14,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',15,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',16,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',17,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',18,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',19,1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (11, '176543219',20,1);
 
 -- insert for each item, its supplier --> 20
 INSERT INTO p5g4.Project.SUPPLIES VALUES (1, 1);
@@ -179,18 +180,18 @@ INSERT INTO p5g4.Project.SUPPLIES VALUES (7, 19);
 INSERT INTO p5g4.Project.SUPPLIES VALUES (7, 20);
 
 -- insert 12 supplier contacts
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('123456123', 6, 6, '2023-06-15 09:24:32', 'Ordering more products');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234129765', 4, 6, '2023-06-17 14:58:21', 'Needed to see availability');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 5, 7, '2023-06-19 08:37:45', 'Ordering more Beret Hats');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 5, 6, '2023-06-14 17:12:03', 'Checking if Baseball Cap are available for order');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('234889889', 5, 6, '2023-06-18 21:30:57', 'Called the company');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('199124587', 2, 1, '2023-06-16 12:45:29', 'Contacted the company to discuss prices');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('199124587', 2, 2, '2023-06-20 07:03:14', 'Ordered more Nintendo Switch Console');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('200010010', 3, 3, '2023-06-15 23:55:02', 'Price negotiation');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('200010010', 3, 1, '2023-06-18 05:42:36', 'Called the company');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 3, '2023-06-17 18:19:47', 'Seeing availability of Amazon Echo Dot (4th Generation)');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 4, '2023-06-19 16:28:10', 'Discused prices');
-INSERT INTO p5g4.Project.CONTACT_SUPPLIER VALUES ('244729300', 1, 5, '2023-06-16 08:12:55', 'Ordered more Dyson V11 Cordless Vacuum Cleaner');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('123456123', 6, 6, '2023-06-15 09:24:32', 'Ordering more products');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('234129765', 4, 6, '2023-06-17 14:58:21', 'Needed to see availability');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('234889889', 5, 7, '2023-06-19 08:37:45', 'Ordering more Beret Hats');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('234889889', 5, 6, '2023-06-14 17:12:03', 'Checking if Baseball Cap are available for order');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('234889889', 5, 6, '2023-06-18 21:30:57', 'Called the company');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('199124587', 2, 1, '2023-06-16 12:45:29', 'Contacted the company to discuss prices');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('199124587', 2, 2, '2023-06-20 07:03:14', 'Ordered more Nintendo Switch Console');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('200010010', 3, 3, '2023-06-15 23:55:02', 'Price negotiation');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('200010010', 3, 1, '2023-06-18 05:42:36', 'Called the company');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('244729300', 1, 3, '2023-06-17 18:19:47', 'Seeing availability of Amazon Echo Dot (4th Generation)');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('244729300', 1, 4, '2023-06-19 16:28:10', 'Discused prices');
+INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, ContactDate, ContactDescription) VALUES ('244729300', 1, 5, '2023-06-16 08:12:55', 'Ordered more Dyson V11 Cordless Vacuum Cleaner');
 
 --insert 6 transport
 INSERT INTO p5g4.Project.TRANSPORT VALUES (1, 1, '189654321', 1, 12.99, 'Plane', 'hts@example.com', 'Horizon Transport Solutions');
@@ -201,6 +202,6 @@ INSERT INTO p5g4.Project.TRANSPORT VALUES (5, 5, '236472918', 1, 9.99, 'Plane', 
 INSERT INTO p5g4.Project.TRANSPORT VALUES (6, 6, '253619487', 0, 5.99, 'Car', 'transmax.express@example.com', 'TransMax Express');
 
 -- insert into contact transport --> 3
-INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('199124587', 2, 1, 1, '189654321', '2023-06-15 19:41:22', 'Contacted company regarding prices');
-INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('123456123', 6, 5, 5, '236472918', '2023-06-20 09:03:18', 'Checking Plane availabilty for more orders');
-INSERT INTO p5g4.Project.CONTACT_TRANSPORT VALUES ('234129765', 4, 4, 4, '237894561', '2023-05-17 13:27:09', 'Talked prices');
+INSERT INTO p5g4.Project.CONTACT_TRANSPORT (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF, ContactDate, ContactDescription) VALUES ('199124587', 2, 1, 1, '189654321', '2023-06-15 19:41:22', 'Contacted company regarding prices');
+INSERT INTO p5g4.Project.CONTACT_TRANSPORT (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF, ContactDate, ContactDescription) VALUES ('123456123', 6, 5, 5, '236472918', '2023-06-20 09:03:18', 'Checking Plane availabilty for more orders');
+INSERT INTO p5g4.Project.CONTACT_TRANSPORT (ManagerNIF, ManagerID, TransportNumber, OrderNumber, CostumerNIF, ContactDate, ContactDescription) VALUES ('234129765', 4, 4, 4, '237894561', '2023-05-17 13:27:09', 'Talked prices');
