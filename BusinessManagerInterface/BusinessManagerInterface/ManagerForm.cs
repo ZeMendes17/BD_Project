@@ -181,31 +181,46 @@ namespace BusinessManagerInterface
 
             if (!tabPage8Loaded)
             {
-                CarregarDadosDaTabela();
+                CarregarDadosDaTabela(true);
                 CarregarSendMessage();
                 tabPage8Loaded = true;
             }
         }
 
-        private void CarregarDadosDaTabela()
+        Panel panelTransport;
+        Label labelTituloTransport;
+        DataGridView dataGridViewTransport;
+        private void CarregarDadosDaTabela(bool flag)
         {
             // Criação de um painel para agrupar o título e o DataGridView
-            Panel panel = new Panel();
-            panel.Dock = DockStyle.Fill;
+            if(flag)
+            {
+                panelTransport = new Panel();
+                panelTransport.Dock = DockStyle.Fill;
 
-            // Criar um Label com o título "Histórico"
-            Label labelTitulo = new Label();
-            labelTitulo.Text = "Histórico";
-            labelTitulo.Font = new Font(labelTitulo.Font, FontStyle.Bold);
-            labelTitulo.AutoSize = true;
+                // Criar um Label com o título "Histórico"
+                labelTituloTransport = new Label();
+                labelTituloTransport.Text = "Histórico";
+                labelTituloTransport.Font = new Font(labelTituloTransport.Font, FontStyle.Bold);
+                labelTituloTransport.AutoSize = true;
 
-            // Criação e configuração de um DataGridView
-            DataGridView dataGridView = new DataGridView();
-            dataGridView.Dock = DockStyle.Fill;
+                // Criação e configuração de um DataGridView
+                dataGridViewTransport = new DataGridView();
+                dataGridViewTransport.Dock = DockStyle.Fill;
+                dataGridViewTransport.ReadOnly = true;
 
-            // Configurar as colunas do DataGridView com base nas colunas do DataTable
-            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                // Configurar as colunas do DataGridView com base nas colunas do DataTable
+                dataGridViewTransport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewTransport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dataGridViewTransport.AllowDrop = false;
+                dataGridViewTransport.AllowUserToAddRows = false;
+                dataGridViewTransport.AllowUserToDeleteRows = false;
+                dataGridViewTransport.AllowUserToResizeRows = false;
+                dataGridViewTransport.AllowUserToResizeColumns = false;
+            }
+
+            dataGridViewTransport.Rows.Clear();
+            dataGridViewTransport.Columns.Clear();
 
             // Conexão com o banco de dados
             cn = getSGBDConnection();
@@ -232,37 +247,37 @@ namespace BusinessManagerInterface
                     // Adicionar as colunas do DataTable ao DataGridView
                     foreach (DataColumn column in dataTable.Columns)
                     {
-                        dataGridView.Columns.Add(column.ColumnName, column.ColumnName);
+                        dataGridViewTransport.Columns.Add(column.ColumnName, column.ColumnName);
                     }
 
                     // Adicionar as linhas do DataTable ao DataGridView
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        dataGridView.Rows.Add(row.ItemArray);
+                        dataGridViewTransport.Rows.Add(row.ItemArray);
                     }
                 }
             }
 
             // Configurar a posição e tamanho dos controles dentro do painel
-            labelTitulo.Location = new Point(0, 0);
-            dataGridView.Location = new Point(0, labelTitulo.Bottom);
+            labelTituloTransport.Location = new Point(0, 0);
+            dataGridViewTransport.Location = new Point(0, labelTituloTransport.Bottom);
 
             // Definir o tamanho do painel com base no tamanho dos controles
-            panel.Size = new Size(Math.Max(labelTitulo.Width, dataGridView.Width), labelTitulo.Height + dataGridView.Height);
+            panelTransport.Size = new Size(Math.Max(labelTituloTransport.Width, dataGridViewTransport.Width), labelTituloTransport.Height + dataGridViewTransport.Height);
 
             // Adicionar o Label e o DataGridView ao painel
-            panel.Controls.Add(labelTitulo);
-            panel.Controls.Add(dataGridView);
+            panelTransport.Controls.Add(labelTituloTransport);
+            panelTransport.Controls.Add(dataGridViewTransport);
 
             // Adicionar o painel ao tableLayoutPanel
-            tableLayoutPanel.Controls.Add(panel, 0, 0);
+            tableLayoutPanel.Controls.Add(panelTransport, 0, 0);
         }
 
 
         private TextBox textBox; // Variável para armazenar a referência da TextBox
         private Button salvarButton; // Variável para armazenar a referência do botão
-        private string defaultText = "Conversar com Transport"; // Texto padrão da TextBox
-        private string defaultTextSup = "Conversar com Supplier"; // Texto padrão da TextBox
+        private string defaultText = "Message Transport"; // Texto padrão da TextBox
+        private string defaultTextSup = "Message Supplier"; // Texto padrão da TextBox
         private string selectedSupplierID;
         private string selectedTransportID;
 
@@ -424,7 +439,7 @@ namespace BusinessManagerInterface
 
             // Limpar a TextBox
             textBox.Text = defaultTextSup;
-
+            CarregarDadosDaTabela(false);
             // Faça algo com a variável "mensagem" (por exemplo, armazená-la em uma variável global ou fazer alguma operação com ela)
         }
 
@@ -433,31 +448,46 @@ namespace BusinessManagerInterface
 
             if (!tabPage9Loaded)
             {
-                CarregarDadosSup();
+                CarregarDadosSup(true);
                 CarregarSendMessageSup();
                 tabPage9Loaded = true;
             }
         }
 
-        private void CarregarDadosSup()
+        Panel panel;
+        Label labelTitulo;
+        DataGridView dataGridView;
+        private void CarregarDadosSup(bool flag)
         {
-            // Criação de um painel para agrupar o título e o DataGridView
-            Panel panel = new Panel();
-            panel.Dock = DockStyle.Fill;
+            if (flag)
+            {
+                // Criação de um painel para agrupar o título e o DataGridView
+                panel = new Panel();
+                panel.Dock = DockStyle.Fill;
 
-            // Criar um Label com o título "Histórico"
-            Label labelTitulo = new Label();
-            labelTitulo.Text = "Histórico";
-            labelTitulo.Font = new Font(labelTitulo.Font, FontStyle.Bold);
-            labelTitulo.AutoSize = true;
+                // Criar um Label com o título "Histórico"
+                labelTitulo = new Label();
+                labelTitulo.Text = "Histórico";
+                labelTitulo.Font = new Font(labelTitulo.Font, FontStyle.Bold);
+                labelTitulo.AutoSize = true;
 
-            // Criação e configuração de um DataGridView
-            DataGridView dataGridView = new DataGridView();
-            dataGridView.Dock = DockStyle.Fill;
+                // Criação e configuração de um DataGridView
+                dataGridView = new DataGridView();
+                dataGridView.Dock = DockStyle.Fill;
+                dataGridView.ReadOnly = true;
+                dataGridView.AllowDrop = false;
+                dataGridView.AllowUserToAddRows = false;
+                dataGridView.AllowUserToDeleteRows = false;
+                dataGridView.AllowUserToResizeRows = false;
+                dataGridView.AllowUserToResizeColumns = false;
 
-            // Configurar as colunas do DataGridView com base nas colunas do DataTable
-            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                // Configurar as colunas do DataGridView com base nas colunas do DataTable
+                dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            }
+
+            dataGridView.Rows.Clear();
+            dataGridView.Columns.Clear();
 
             // Conexão com o banco de dados
             cn = getSGBDConnection();
@@ -675,6 +705,7 @@ namespace BusinessManagerInterface
 
             // Limpar a TextBox
             textBox.Text = defaultTextSup;
+            CarregarDadosSup(false);
 
             // Faça algo com a variável "mensagem" (por exemplo, armazená-la em uma variável global ou fazer alguma operação com ela)
         }
@@ -713,16 +744,14 @@ namespace BusinessManagerInterface
 
                 if (flag)
                 {
-                    cmd = new SqlCommand("SELECT * FROM Project.TRANSPORT", cn);
+                    cmd = new SqlCommand("SELECT * FROM Project.getOrderTransportInfo(@param)", cn);
+                    cmd.Parameters.AddWithValue("@param", orderNum);
                     rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
-                        if (rdr["OrderNumber"].ToString() == orderNum)
-                        {
-                            labelDetails.Text += "Delivery Company: " + rdr["CompanyName"] + ", " + rdr["CompanyEmail"] + "\n\n";
-                            labelDetails.Text += "Transportation Method: " + rdr["Method"] + "\n\n";
-                            labelDetails.Text += "Transport Number: " + rdr["TransportNumber"] + "\n\n";
-                        }
+                        labelDetails.Text += "Delivery Company: " + rdr["CompanyName"] + ", " + rdr["CompanyEmail"] + "\n\n";
+                        labelDetails.Text += "Transportation Method: " + rdr["Method"] + "\n\n";
+                        labelDetails.Text += "Transport Number: " + rdr["TransportNumber"] + "\n\n";
                     }
                     rdr.Close();
 

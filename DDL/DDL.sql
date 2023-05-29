@@ -194,3 +194,13 @@ CREATE TABLE Project.CONTACT_TRANSPORT(
     FOREIGN KEY (ManagerNIF, ManagerID) REFERENCES Project.Manager (ManagerNIF, ID) ON UPDATE CASCADE,
     FOREIGN KEY (TransportNumber) REFERENCES Project.TRANSPORT (TransportNumber) ON UPDATE CASCADE
 );
+
+CREATE TABLE Project.DELIVERS(
+    TransportNumber INT NOT NULL,
+    OrderNumber     INT NOT NULL,
+    CostumerNIF     CHAR(9) NOT NULL,
+
+    PRIMARY KEY (TransportNumber, OrderNumber, CostumerNIF),
+    FOREIGN KEY (TransportNumber) REFERENCES Project.TRANSPORT (TransportNumber) ON UPDATE CASCADE,
+    FOREIGN KEY (OrderNumber, CostumerNIF) REFERENCES Project.[ORDER] (OrderNumber, CostumerNIF) ON UPDATE CASCADE
+);

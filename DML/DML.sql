@@ -196,7 +196,7 @@ INSERT INTO p5g4.Project.CONTACT_SUPPLIER (ManagerNIF, ManagerID, SupplierID, Co
 --insert 6 transport
 INSERT INTO p5g4.Project.TRANSPORT VALUES (1, 1, 12.99, 'Plane', 'hts@example.com', 'Horizon Transport Solutions');
 INSERT INTO p5g4.Project.TRANSPORT VALUES (2, 1, 6.99, 'Car', 'hts@example.com', 'Horizon Transport Solutions');
-INSERT INTO p5g4.Project.TRANSPORT VALUES (3, 0, 3.99, 'Car', 'hts@example.com', 'Horizon Transport Solutions');
+INSERT INTO p5g4.Project.TRANSPORT VALUES (3, 0, 3.99, 'Boat', 'hts@example.com', 'Horizon Transport Solutions');
 INSERT INTO p5g4.Project.TRANSPORT VALUES (4, 1, 2.99, 'Boat', 'swifttlogistics@example.com', 'SwiftTrans Logistics');
 INSERT INTO p5g4.Project.TRANSPORT VALUES (5, 1, 9.99, 'Plane', 'swifttlogistics@example.com', 'SwiftTrans Logistics');
 INSERT INTO p5g4.Project.TRANSPORT VALUES (6, 0, 5.99, 'Car', 'transmax.express@example.com', 'TransMax Express');
@@ -205,3 +205,13 @@ INSERT INTO p5g4.Project.TRANSPORT VALUES (6, 0, 5.99, 'Car', 'transmax.express@
 INSERT INTO p5g4.Project.CONTACT_TRANSPORT (ManagerNIF, ManagerID, TransportNumber, ContactDate, ContactDescription) VALUES ('199124587', 2, 1, '2023-06-15 19:41:22', 'Contacted company regarding prices');
 INSERT INTO p5g4.Project.CONTACT_TRANSPORT (ManagerNIF, ManagerID, TransportNumber, ContactDate, ContactDescription) VALUES ('123456123', 6, 5, '2023-06-20 09:03:18', 'Checking Plane availabilty for more orders');
 INSERT INTO p5g4.Project.CONTACT_TRANSPORT (ManagerNIF, ManagerID, TransportNumber, ContactDate, ContactDescription) VALUES ('234129765', 4, 4, '2023-05-17 13:27:09', 'Talked prices');
+
+-- insert into delivers --> 8
+INSERT INTO p5g4.Project.DELIVERS VALUES (2, 2, '129743586');
+INSERT INTO p5g4.Project.DELIVERS VALUES (3, 3, '216598743');
+INSERT INTO p5g4.Project.DELIVERS VALUES (5, 5, '236472918');
+INSERT INTO p5g4.Project.DELIVERS VALUES (1, 6, '253619487');
+INSERT INTO p5g4.Project.DELIVERS VALUES (4, 8, '219384657');
+INSERT INTO p5g4.Project.DELIVERS VALUES (5, 9, '276981345');
+INSERT INTO p5g4.Project.DELIVERS VALUES (6, 10, '176543219');
+INSERT INTO p5g4.Project.DELIVERS VALUES (1, 11, '176543219');
