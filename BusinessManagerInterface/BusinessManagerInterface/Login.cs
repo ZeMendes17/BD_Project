@@ -98,14 +98,14 @@ namespace BusinessManagerInterface
                 String dbname = rdr["UserName"].ToString();
                 String dbpass = rdr["UserPassword"].ToString();
                 //Console.WriteLine(dbname);
-                if(dbname == username && dbpass == password)
+                if (dbname == username && dbpass == password)
                 {
                     NIF = rdr["UserNIF"].ToString();
                     break;
                 }
             }
             rdr.Close();
-            if(NIF != null)
+            if (NIF != null)
             {
                 //showBox.Text = "Found user" + NIF;
 
@@ -119,6 +119,7 @@ namespace BusinessManagerInterface
                     if (dbNIF == NIF)
                     {
                         //showBox.Text = showBox.Text + " --> MANAGER";
+                        manager = true;
                     }
                 }
                 rdr.Close();
@@ -170,9 +171,36 @@ namespace BusinessManagerInterface
                 }
                 rdr.Close();
             }
-            if(manager)
+            if (manager)
             {
-                // codigo similar ao de cima
+                cmd = new SqlCommand("SELECT * FROM Project.getManagerInfo(@param)", cn);
+                cmd.Parameters.AddWithValue("@param", NIF);
+                //cn.Open();
+
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Manager M = new Manager(rdr["NIF"].ToString(), Convert.ToInt32(rdr["ID"]));
+                    M.Address = rdr["Address"].ToString();
+                    M.Name = rdr["PName"].ToString();
+                    M.Phone = rdr["PhoneNumb"].ToString();
+                    M.Email = rdr["Email"].ToString();
+                    M.Birthdate = rdr["BirthDate"].ToString();
+                    M.RegisterDate = rdr["RegisterDate"].ToString();
+                    M.Password = rdr["UserPassword"].ToString();
+                    M.Username = rdr["UserName"].ToString();
+                    M.Salary = Convert.ToDouble(rdr["Salary"]);
+                    M.Url = rdr["StoreURL"].ToString();
+                    //showBox.Text = " --> " + S.Name + " " + S.Email;
+                    manager = false;
+                    // para abrir a janela do manager (esconde esta entretanto e fecha quando este fechar também)
+                    this.Hide();
+                    ManagerForm form = new ManagerForm();
+                    form.St = M;
+                    form.FormClosed += (s, args) => this.Close();
+                    form.Show();
+                }
+                rdr.Close();
             }
 
             cn.Close();
@@ -180,7 +208,7 @@ namespace BusinessManagerInterface
 
         private void Login_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 but.PerformClick();
             }
