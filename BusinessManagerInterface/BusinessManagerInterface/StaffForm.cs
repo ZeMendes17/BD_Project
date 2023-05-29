@@ -580,5 +580,14 @@ namespace BusinessManagerInterface
             
             rdr.Close();
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // show login
+            Login form = new Login();
+            form.FormClosed += (s, args) => this.Close();
+            form.Show();
+        }
     }
 }

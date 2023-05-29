@@ -56,6 +56,7 @@
             this.statsPanel = new System.Windows.Forms.Panel();
             this.StaffInfo = new System.Windows.Forms.Label();
             this.StaffName = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -404,7 +405,6 @@
             this.itemFilter.Name = "itemFilter";
             this.itemFilter.Size = new System.Drawing.Size(206, 36);
             this.itemFilter.TabIndex = 1;
-            this.itemFilter.SelectedItem = "Name";
             // 
             // itemSearch
             // 
@@ -428,6 +428,7 @@
             // 
             // statsPanel
             // 
+            this.statsPanel.Controls.Add(this.exitButton);
             this.statsPanel.Controls.Add(this.StaffInfo);
             this.statsPanel.Controls.Add(this.StaffName);
             this.statsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -454,6 +455,19 @@
             this.StaffName.Size = new System.Drawing.Size(1299, 53);
             this.StaffName.TabIndex = 1;
             this.StaffName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.BackColor = System.Drawing.Color.Firebrick;
+            this.exitButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exitButton.Location = new System.Drawing.Point(1168, 598);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(125, 35);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // StaffForm
             // 
@@ -522,5 +536,6 @@
         private System.Windows.Forms.Panel statsPanel;
         private System.Windows.Forms.Label StaffInfo;
         private System.Windows.Forms.Label StaffName;
+        private System.Windows.Forms.Button exitButton;
     }
 }
