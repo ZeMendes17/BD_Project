@@ -77,6 +77,10 @@ INSERT INTO p5g4.Project.[ORDER] VALUES (8, '219384657', 203.94, 'Delivered', 6,
 INSERT INTO p5g4.Project.[ORDER] VALUES (9, '276981345', 3499.96, 'Shipped', 4, 'https://www.weselltech.com', '2023-07-05 09:00:00');
 INSERT INTO p5g4.Project.[ORDER] VALUES (10, '176543219', 4479.90, 'Shipped', 10, 'https://www.weselltech.com', '2023-07-05 09:00:00');
 INSERT INTO p5g4.Project.[ORDER] VALUES (11, '176543219', 339.90, 'Shipped', 10, 'https://www.hatit.com', '2023-07-05 09:00:10');
+-- 3 canceled order
+INSERT INTO p5g4.Project.[ORDER] VALUES (100, '189654321', 1099.99, 'Canceled', 1, 'https://www.weselltech.com','2023-06-01 14:30:00');
+INSERT INTO p5g4.Project.[ORDER] VALUES (101, '129743586', 299.99, 'Canceled', 1, 'https://www.weselltech.com', '2023-06-19 12:34:56');
+INSERT INTO p5g4.Project.[ORDER] VALUES (102, '182736451', 59.98, 'Canceled', 2, 'https://www.hatit.com', '2023-06-21 18:15:12');
 
 
 -- insert 6 orders to manages
@@ -86,6 +90,10 @@ INSERT INTO p5g4.Project.MANAGES VALUES ('234344333', 11, 3, '216598743');
 INSERT INTO p5g4.Project.MANAGES VALUES ('251236789', 7, 4, '237894561');
 INSERT INTO p5g4.Project.MANAGES VALUES ('251236789', 7, 5, '236472918');
 INSERT INTO p5g4.Project.MANAGES VALUES ('222222333', 8, 6, '253619487');
+-- canceled order
+INSERT INTO p5g4.Project.MANAGES VALUES ('255544444', 14, 100, '189654321');
+INSERT INTO p5g4.Project.MANAGES VALUES ('255544444', 14, 101, '129743586');
+INSERT INTO p5g4.Project.MANAGES VALUES ('351236789', 15, 102, '182736451');
 
 -- insert 20 items
 INSERT INTO p5g4.Project.ITEM VALUES (1, 'Apple iPhone 12 Pro', 1099.99, 5, 'https://www.weselltech.com');
@@ -123,6 +131,11 @@ INSERT INTO p5g4.Project.ITEM_ORDER VALUES (6, '253619487', 17, 1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (7, '123456789', 8, 1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (7, '123456789', 9, 1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (7, '123456789', 10, 1);
+-- canceled order
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (100, '189654321', 1, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (101, '129743586', 2, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (102, '182736451', 15, 1);
+INSERT INTO p5g4.Project.ITEM_ORDER VALUES (102, '182736451', 20, 1);
 
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (8, '219384657', 15, 1);
 INSERT INTO p5g4.Project.ITEM_ORDER VALUES (8, '219384657', 16, 1);

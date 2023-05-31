@@ -4,13 +4,14 @@
 -- DROP FUNCTION IF EXISTS deleteCanceledOrders;
 -- GO
 
-CREATE PROCEDURE deleteCanceledOrders @NIF INT
+CREATE PROCEDURE Project.deleteCanceledOrders @NIF INT
 AS
 BEGIN
     DECLARE @StoreURL VARCHAR(50);
     DECLARE @OrderNumber INT;
+    DECLARE @CostumerNIF CHAR(9);
 
-    SET @StoreURL = (SELECT StoreURL FROM Project.MANAGER WHERE NIF = @NIF);
+    SET @StoreURL = (SELECT StoreURL FROM Project.MANAGER WHERE ManagerNIF = @NIF);
 
     IF @StoreURL IS NULL
     BEGIN
@@ -29,9 +30,10 @@ BEGIN
 
     WHILE @@FETCH_STATUS = 0
     BEGIN
-        DELETE FROM Project.[ORDER] WHERE OrderNumber = @OrderNumber AND CostumerNIF = @CostumerNIF;
         DELETE FROM Project.ITEM_ORDER WHERE OrderNumber = @OrderNumber AND CostumerNIF = @CostumerNIF;
         DELETE FROM Project.MANAGES WHERE OrderNumber = @OrderNumber AND CostumerNIF = @CostumerNIF;
+        -- has to be in this order because of the FK
+        DELETE FROM Project.[ORDER] WHERE OrderNumber = @OrderNumber AND CostumerNIF = @CostumerNIF;
 
         FETCH CanceledOrders INTO @OrderNumber, @CostumerNIF;
     END

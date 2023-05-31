@@ -12,3 +12,4 @@ C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterf
 C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.StaffForm.resources
 C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.ItemForm.resources
 C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.StaffManageOrder.resources
+C:\Users\zeped\Desktop\BD_Project\BusinessManagerInterface\BusinessManagerInterface\obj\Debug\BusinessManagerInterface.ManagerForm.resources

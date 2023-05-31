@@ -54,9 +54,9 @@
             this.itemSearch = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.statsPanel = new System.Windows.Forms.Panel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.StaffInfo = new System.Windows.Forms.Label();
             this.StaffName = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -359,7 +359,7 @@
             this.dataGridViewCanceled.RowTemplate.Height = 24;
             this.dataGridViewCanceled.Size = new System.Drawing.Size(633, 569);
             this.dataGridViewCanceled.TabIndex = 0;
-            this.dataGridViewCanceled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCanceled_CellContentClick);
+            this.dataGridViewCanceled.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCanceled_CellContentClick);
             // 
             // tabPage2
             // 
@@ -437,6 +437,19 @@
             this.statsPanel.Size = new System.Drawing.Size(1299, 639);
             this.statsPanel.TabIndex = 0;
             // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.BackColor = System.Drawing.Color.Firebrick;
+            this.exitButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exitButton.Location = new System.Drawing.Point(1168, 598);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(125, 35);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
             // StaffInfo
             // 
             this.StaffInfo.AutoSize = true;
@@ -455,19 +468,6 @@
             this.StaffName.Size = new System.Drawing.Size(1299, 53);
             this.StaffName.TabIndex = 1;
             this.StaffName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.BackColor = System.Drawing.Color.Firebrick;
-            this.exitButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.exitButton.Location = new System.Drawing.Point(1168, 598);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(125, 35);
-            this.exitButton.TabIndex = 3;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // StaffForm
             // 

@@ -275,16 +275,14 @@ namespace BusinessManagerInterface
 
                 if (flag)
                 {
-                    cmd = new SqlCommand("SELECT * FROM Project.TRANSPORT", cn);
+                    cmd = new SqlCommand("SELECT * FROM Project.getOrderTransportInfo(@param)", cn);
+                    cmd.Parameters.AddWithValue("@param", int.Parse(orderNum));
                     rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
-                        if (rdr["OrderNumber"].ToString() == orderNum)
-                        {
-                            labelDetails.Text += "Delivery Company: " + rdr["CompanyName"] + ", " + rdr["CompanyEmail"] + "\n\n";
-                            labelDetails.Text += "Transportation Method: " + rdr["Method"] + "\n\n";
-                            labelDetails.Text += "Transport Number: " + rdr["TransportNumber"] + "\n\n";
-                        }
+                        labelDetails.Text += "Delivery Company: " + rdr["CompanyName"] + ", " + rdr["CompanyEmail"] + "\n\n";
+                        labelDetails.Text += "Transportation Method: " + rdr["Method"] + "\n\n";
+                        labelDetails.Text += "Transport Number: " + rdr["TransportNumber"] + "\n\n";
                     }
                     rdr.Close();
 

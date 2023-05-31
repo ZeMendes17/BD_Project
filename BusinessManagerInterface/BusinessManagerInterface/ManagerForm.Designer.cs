@@ -32,10 +32,10 @@ namespace BusinessManagerInterface
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.manageButton = new System.Windows.Forms.Button();
@@ -48,6 +48,8 @@ namespace BusinessManagerInterface
             this.dataGridShipped = new System.Windows.Forms.DataGridView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dataGridDelivered = new System.Windows.Forms.DataGridView();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.canceledDataView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.itemFilter = new System.Windows.Forms.ComboBox();
@@ -56,15 +58,18 @@ namespace BusinessManagerInterface
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tableLayoutSup = new System.Windows.Forms.TableLayoutPanel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.GridRecebidas = new System.Windows.Forms.DataGridView();
             this.GridEnviar = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.labelDetails = new System.Windows.Forms.Label();
+            this.name = new System.Windows.Forms.Label();
+            this.info = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -76,15 +81,18 @@ namespace BusinessManagerInterface
             ((System.ComponentModel.ISupportInitialize)(this.dataGridShipped)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDelivered)).BeginInit();
+            this.tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canceledDataView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             this.tabPage7.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            this.tableLayoutPanel.SuspendLayout();
-            this.tableLayoutSup.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridRecebidas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridEnviar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -124,18 +132,20 @@ namespace BusinessManagerInterface
             // manageButton
             // 
             this.manageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.manageButton.BackColor = System.Drawing.Color.Red;
             this.manageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manageButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.manageButton.Location = new System.Drawing.Point(1151, 6);
             this.manageButton.Name = "manageButton";
             this.manageButton.Size = new System.Drawing.Size(119, 34);
             this.manageButton.TabIndex = 5;
-            this.manageButton.Text = "Manage";
-            this.manageButton.UseVisualStyleBackColor = true;
+            this.manageButton.Text = "Delete";
+            this.manageButton.UseVisualStyleBackColor = false;
             this.manageButton.Click += new System.EventHandler(this.manageButton_Click);
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -157,14 +167,14 @@ namespace BusinessManagerInterface
             this.dataGridItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridItems.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItems.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridItems.Location = new System.Drawing.Point(0, 344);
@@ -177,12 +187,13 @@ namespace BusinessManagerInterface
             // 
             // tabControl2
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl2.ItemSize = new System.Drawing.Size(150, 25);
             this.tabControl2.Location = new System.Drawing.Point(1, 39);
@@ -259,14 +270,14 @@ namespace BusinessManagerInterface
             this.dataGridShipped.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridShipped.Name = "dataGridShipped";
             this.dataGridShipped.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridShipped.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridShipped.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridShipped.RowHeadersWidth = 51;
             this.dataGridShipped.RowTemplate.Height = 24;
             this.dataGridShipped.Size = new System.Drawing.Size(623, 561);
@@ -295,32 +306,60 @@ namespace BusinessManagerInterface
             this.dataGridDelivered.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridDelivered.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridDelivered.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridDelivered.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridDelivered.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridDelivered.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridDelivered.Location = new System.Drawing.Point(0, 0);
             this.dataGridDelivered.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridDelivered.Name = "dataGridDelivered";
             this.dataGridDelivered.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridDelivered.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridDelivered.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridDelivered.RowHeadersWidth = 51;
             this.dataGridDelivered.RowTemplate.Height = 24;
             this.dataGridDelivered.Size = new System.Drawing.Size(629, 565);
             this.dataGridDelivered.TabIndex = 0;
             this.dataGridDelivered.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDelivered_CellContentClick);
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.canceledDataView);
+            this.tabPage10.Location = new System.Drawing.Point(4, 29);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(633, 569);
+            this.tabPage10.TabIndex = 3;
+            this.tabPage10.Text = "Canceled";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // canceledDataView
+            // 
+            this.canceledDataView.AllowUserToAddRows = false;
+            this.canceledDataView.AllowUserToDeleteRows = false;
+            this.canceledDataView.AllowUserToResizeColumns = false;
+            this.canceledDataView.AllowUserToResizeRows = false;
+            this.canceledDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.canceledDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.canceledDataView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canceledDataView.Location = new System.Drawing.Point(0, 0);
+            this.canceledDataView.Name = "canceledDataView";
+            this.canceledDataView.ReadOnly = true;
+            this.canceledDataView.RowHeadersWidth = 51;
+            this.canceledDataView.RowTemplate.Height = 24;
+            this.canceledDataView.Size = new System.Drawing.Size(633, 569);
+            this.canceledDataView.TabIndex = 0;
+            this.canceledDataView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.canceledDataView_CellClick);
             // 
             // tabPage2
             // 
@@ -379,7 +418,6 @@ namespace BusinessManagerInterface
             // 
             this.tabPage7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage7.Controls.Add(this.tabControl3);
-            this.tabPage7.Enter += new System.EventHandler(this.tabPage8_Enter);
             this.tabPage7.Location = new System.Drawing.Point(4, 44);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage7.Name = "tabPage7";
@@ -388,6 +426,7 @@ namespace BusinessManagerInterface
             this.tabPage7.Text = "Messages";
             this.tabPage7.UseVisualStyleBackColor = true;
             this.tabPage7.Click += new System.EventHandler(this.tabPage7_Click);
+            this.tabPage7.Enter += new System.EventHandler(this.tabPage8_Enter);
             // 
             // tabControl3
             // 
@@ -409,7 +448,6 @@ namespace BusinessManagerInterface
             // 
             this.tabPage8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage8.Controls.Add(this.tableLayoutPanel);
-            this.tabPage8.Enter += new System.EventHandler(this.tabPage8_Enter);
             this.tabPage8.Location = new System.Drawing.Point(4, 44);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage8.Name = "tabPage8";
@@ -418,10 +456,11 @@ namespace BusinessManagerInterface
             this.tabPage8.TabIndex = 0;
             this.tabPage8.Text = "Transport";
             this.tabPage8.UseVisualStyleBackColor = true;
+            this.tabPage8.Enter += new System.EventHandler(this.tabPage8_Enter);
             // 
-            // tableLayoutPanel (transport)
+            // tableLayoutPanel
             // 
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1281F));
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -431,29 +470,10 @@ namespace BusinessManagerInterface
             this.tableLayoutPanel.Size = new System.Drawing.Size(1281, 583);
             this.tableLayoutPanel.TabIndex = 0;
             // 
-            // label5*
-            // 
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 23);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Campo 1";
-            // 
-            // label6*
-            // 
-            this.label6.Location = new System.Drawing.Point(3, 291);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 23);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Campo 2";
-            // 
             // tabPage9
             // 
             this.tabPage9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage9.Controls.Add(this.tableLayoutSup);
-            this.tabPage9.Enter += new System.EventHandler(this.tabPage9_Enter);
-            //this.tabPage9.Enter += new System.EventHandler(this.fazer funcao parecida com tabpage8_enter);
-            //this.tabPage9.Controls.Add(this.fazer um novo table layout panel);
             this.tabPage9.Location = new System.Drawing.Point(4, 44);
             this.tabPage9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage9.Name = "tabPage9";
@@ -462,11 +482,11 @@ namespace BusinessManagerInterface
             this.tabPage9.TabIndex = 0;
             this.tabPage9.Text = "Supplier";
             this.tabPage9.UseVisualStyleBackColor = true;
-
+            this.tabPage9.Enter += new System.EventHandler(this.tabPage9_Enter);
             // 
-            // tableLayoutPanel (supplier)
+            // tableLayoutSup
             // 
-            this.tableLayoutSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1281F));
             this.tableLayoutSup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutSup.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutSup.Name = "tableLayoutSup";
@@ -475,21 +495,13 @@ namespace BusinessManagerInterface
             this.tableLayoutSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutSup.Size = new System.Drawing.Size(1281, 583);
             this.tableLayoutSup.TabIndex = 0;
-
-
-
-
-
-
-
-
-
-
-
             // 
             // tabPage3
             // 
             this.tabPage3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Controls.Add(this.info);
+            this.tabPage3.Controls.Add(this.name);
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
@@ -499,43 +511,39 @@ namespace BusinessManagerInterface
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 23);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Campo 1";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(3, 291);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 23);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Campo 2";
+            // 
             // GridRecebidas
             // 
-            //   this.GridRecebidas.AllowUserToAddRows = false;
-            //   this.GridRecebidas.AllowUserToDeleteRows = false;
-            //   this.GridRecebidas.AllowUserToOrderColumns = true;
-            //   this.GridRecebidas.AllowUserToResizeColumns = false;
-            //   this.GridRecebidas.AllowUserToResizeRows = false;
-            //   this.GridRecebidas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //   this.GridRecebidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            //   this.GridRecebidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            //   this.GridRecebidas.Location = new System.Drawing.Point(3, 2);
-            //   this.GridRecebidas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //   this.GridRecebidas.Name = "GridRecebidas";
-            //   this.GridRecebidas.ReadOnly = true;
-            //   this.GridRecebidas.RowHeadersWidth = 51;
-            //   this.GridRecebidas.RowTemplate.Height = 24;
-            //   this.GridRecebidas.Size = new System.Drawing.Size(623, 561);
-            //   this.GridRecebidas.TabIndex = 0;
-            //   // 
-            //   // GridEnviar
-            //   // 
-            //   this.GridEnviar.AllowUserToAddRows = false;
-            //   this.GridEnviar.AllowUserToDeleteRows = false;
-            //   this.GridEnviar.AllowUserToOrderColumns = true;
-            //   this.GridEnviar.AllowUserToResizeColumns = false;
-            //   this.GridEnviar.AllowUserToResizeRows = false;
-            //   this.GridEnviar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //   this.GridEnviar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            //   this.GridEnviar.Dock = System.Windows.Forms.DockStyle.Fill;
-            //   this.GridEnviar.Location = new System.Drawing.Point(3, 2);
-            //   this.GridEnviar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //   this.GridEnviar.Name = "GridEnviar";
-            //   this.GridEnviar.ReadOnly = true;
-            //   this.GridEnviar.RowHeadersWidth = 51;
-            //   this.GridEnviar.RowTemplate.Height = 24;
-            //   this.GridEnviar.Size = new System.Drawing.Size(623, 561);
-            //   this.GridEnviar.TabIndex = 1;
+            this.GridRecebidas.ColumnHeadersHeight = 29;
+            this.GridRecebidas.Location = new System.Drawing.Point(0, 0);
+            this.GridRecebidas.Name = "GridRecebidas";
+            this.GridRecebidas.RowHeadersWidth = 51;
+            this.GridRecebidas.Size = new System.Drawing.Size(240, 150);
+            this.GridRecebidas.TabIndex = 0;
+            // 
+            // GridEnviar
+            // 
+            this.GridEnviar.ColumnHeadersHeight = 29;
+            this.GridEnviar.Location = new System.Drawing.Point(0, 0);
+            this.GridEnviar.Name = "GridEnviar";
+            this.GridEnviar.RowHeadersWidth = 51;
+            this.GridEnviar.Size = new System.Drawing.Size(240, 150);
+            this.GridEnviar.TabIndex = 0;
             // 
             // label1
             // 
@@ -555,6 +563,44 @@ namespace BusinessManagerInterface
             this.labelDetails.Name = "labelDetails";
             this.labelDetails.Size = new System.Drawing.Size(620, 66);
             this.labelDetails.TabIndex = 1;
+            // 
+            // name
+            // 
+            this.name.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.name.Dock = System.Windows.Forms.DockStyle.Top;
+            this.name.Location = new System.Drawing.Point(0, 0);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(1299, 29);
+            this.name.TabIndex = 0;
+            this.name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // info
+            // 
+            this.info.AutoSize = true;
+            this.info.Dock = System.Windows.Forms.DockStyle.Top;
+            this.info.Location = new System.Drawing.Point(0, 29);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(0, 29);
+            this.info.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 58);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1299, 150);
+            this.dataGridView1.TabIndex = 2;
             // 
             // ManagerForm
             // 
@@ -579,16 +625,20 @@ namespace BusinessManagerInterface
             ((System.ComponentModel.ISupportInitialize)(this.dataGridShipped)).EndInit();
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDelivered)).EndInit();
+            this.tabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.canceledDataView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
-            this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutSup.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridRecebidas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridEnviar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -632,5 +682,10 @@ namespace BusinessManagerInterface
         private DataGridView GridEnviar;
         private Label label5;
         private Label label6;
+        private TabPage tabPage10;
+        private DataGridView canceledDataView;
+        private Label info;
+        private Label name;
+        private DataGridView dataGridView1;
     }
 }
